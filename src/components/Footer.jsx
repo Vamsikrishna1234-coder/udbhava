@@ -1,81 +1,3 @@
-// export default function Footer() {
-//   return (
-//     <footer className="bg-[#0C0C0C] text-gray-300 pt-20 pb-6">
-      
-//       {/* Main Footer Content */}
-//       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10">
-
-//         {/* Brand */}
-//         <div>
-//           <h2 className="text-white text-2xl font-semibold tracking-wider mb-4">
-//             NEELAKANT ARCHITECTS
-//           </h2>
-//           <p className="text-sm leading-relaxed text-gray-400">
-//             Creating timeless spaces with modern aesthetics and precision-engineered design.
-//             We craft architecture that inspires, innovates, and elevates living.
-//           </p>
-
-//           {/* Social Icons */}
-//           <div className="flex gap-4 mt-5">
-//             <a className="hover:text-[#C8A135] transition" href="#">Facebook</a>
-//             <a className="hover:text-[#C8A135] transition" href="#">Instagram</a>
-//             <a className="hover:text-[#C8A135] transition" href="#">LinkedIn</a>
-//           </div>
-//         </div>
-
-//         {/* Quick Links */}
-//         <div>
-//           <h3 className="text-white text-lg font-medium mb-4">Quick Links</h3>
-//           <ul className="space-y-2 text-sm text-gray-400">
-//             <li className="hover:text-[#C8A135] cursor-pointer">Home</li>
-//             <li className="hover:text-[#C8A135] cursor-pointer">About Us</li>
-//             <li className="hover:text-[#C8A135] cursor-pointer">Services</li>
-//             <li className="hover:text-[#C8A135] cursor-pointer">Our Works</li>
-//             <li className="hover:text-[#C8A135] cursor-pointer">Contact</li>
-//           </ul>
-//         </div>
-
-//         {/* Services */}
-//         <div>
-//           <h3 className="text-white text-lg font-medium mb-4">Services</h3>
-//           <ul className="space-y-2 text-sm text-gray-400">
-//             <li className="hover:text-[#C8A135] cursor-pointer">Plan & Design</li>
-//             <li className="hover:text-[#C8A135] cursor-pointer">Architecture</li>
-//             <li className="hover:text-[#C8A135] cursor-pointer">Interior Design</li>
-//             <li className="hover:text-[#C8A135] cursor-pointer">Project Planning</li>
-//           </ul>
-//         </div>
-
-//         {/* Contact Info */}
-//         <div>
-//           <h3 className="text-white text-lg font-medium mb-4">Get In Touch</h3>
-//           <ul className="space-y-2 text-sm text-gray-400">
-//             <li>📍 Hyderabad, Telangana, India</li>
-//             <li>📞 +91 98765 43210</li>
-//             <li>✉️ info@neelakantarchitects.com</li>
-//           </ul>
-//         </div>
-
-//       </div>
-
-//       {/* Divider */}
-//       <div className="border-t border-gray-700 mt-10"></div>
-
-//       {/* Bottom Row */}
-//       <div className="max-w-7xl mx-auto px-6 mt-6 flex flex-col md:flex-row items-center justify-between text-sm text-gray-500">
-//         <p>© 2026 Neelakant Architects. All Rights Reserved.</p>
-
-//         <p className="mt-2 md:mt-0">
-//           Designed by <span className="text-[#C8A135] font-medium">Tact Advertising</span>
-//         </p>
-//       </div>
-
-//     </footer>
-//   );
-// }
-
-
-
 import { useState } from "react";
 import favicon from "../assets/images/tact favicon.png";
 
@@ -276,7 +198,7 @@ export default function FooterSection() {
                   style={{
                     fontFamily: " sans-serif",
                     fontSize: 17,
-                    color: "#fff",
+                    color: "#a1a0a0",
                     lineHeight: 1.5,
                     whiteSpace: "pre-line",
                   }}

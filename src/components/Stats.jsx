@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from "react";
 import { Ruler, Lightbulb, PenTool, Monitor, Hammer } from "lucide-react";
 
@@ -48,7 +49,19 @@ function useInView(threshold = 0.15) {
   return [ref, inView];
 }
 
-function StepCard({ step, index, inView }) {
+function useWindowWidth() {
+  const [width, setWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 1200
+  );
+  useEffect(() => {
+    const handler = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handler);
+    return () => window.removeEventListener("resize", handler);
+  }, []);
+  return width;
+}
+
+function StepCard({ step, index, inView, isMobile, isTablet }) {
   const [hovered, setHovered] = useState(false);
   const Icon = step.icon;
   const delay = index * 120;
@@ -67,7 +80,7 @@ function StepCard({ step, index, inView }) {
         style={{
           background: hovered ? "#d85c26" : "#fff",
           borderRadius: "12px",
-          padding: "32px 24px",
+          padding: isMobile ? "24px 18px" : "32px 24px",
           boxShadow: hovered
             ? "0 20px 60px rgba(216,92,38,0.35)"
             : "0 4px 24px rgba(0,0,0,0.08)",
@@ -75,9 +88,10 @@ function StepCard({ step, index, inView }) {
           transform: hovered ? "translateY(-8px) scale(1.03)" : "translateY(0) scale(1)",
           cursor: "default",
           display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          textAlign: "center",
+          flexDirection: isMobile ? "row" : "column",
+          alignItems: isMobile ? "flex-start" : "center",
+          textAlign: isMobile ? "left" : "center",
+          gap: isMobile ? "16px" : 0,
           height: "100%",
           position: "relative",
           overflow: "hidden",
@@ -89,7 +103,7 @@ function StepCard({ step, index, inView }) {
             position: "absolute",
             top: "10px",
             right: "14px",
-            fontSize: "52px",
+            fontSize: isMobile ? "36px" : "52px",
             fontWeight: "900",
             color: hovered ? "rgba(255,255,255,0.12)" : "rgba(216,92,38,0.07)",
             lineHeight: 1,
@@ -105,60 +119,68 @@ function StepCard({ step, index, inView }) {
         {/* Icon circle */}
         <div
           style={{
-            width: "76px",
-            height: "76px",
+            width: isMobile ? "56px" : "76px",
+            height: isMobile ? "56px" : "76px",
             borderRadius: "50%",
             border: `2px solid ${hovered ? "rgba(255,255,255,0.7)" : "#d85c26"}`,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             color: hovered ? "#fff" : "#d85c26",
-            marginBottom: "20px",
+            marginBottom: isMobile ? 0 : "20px",
             transition: "border-color 0.38s ease, color 0.38s ease, transform 0.38s ease",
             transform: hovered ? "rotate(8deg) scale(1.1)" : "rotate(0deg) scale(1)",
             flexShrink: 0,
           }}
         >
-          <Icon size={32} strokeWidth={1.5} />
+          <Icon size={isMobile ? 22 : 32} strokeWidth={1.5} />
         </div>
 
-        {/* Connector dot below icon */}
-        <div
-          style={{
-            width: "6px",
-            height: "6px",
-            borderRadius: "50%",
-            background: hovered ? "rgba(255,255,255,0.6)" : "#d85c26",
-            marginBottom: "16px",
-            transition: "background 0.38s ease",
-          }}
-        />
+        {/* Text content */}
+        <div style={{ flex: 1 }}>
+          {/* Connector dot — only on desktop/tablet column layout */}
+          {!isMobile && (
+            <div
+              style={{
+                width: "6px",
+                height: "6px",
+                borderRadius: "50%",
+                background: hovered ? "rgba(255,255,255,0.6)" : "#d85c26",
+                marginBottom: "16px",
+                transition: "background 0.38s ease",
+                margin: "0 auto 16px",
+              }}
+            />
+          )}
 
-        <h3
-          style={{
-            fontSize: "14px",
-            fontWeight: "800",
-            textTransform: "uppercase",
-            letterSpacing: "0.08em",
-            color: hovered ? "#fff" : "#1a1a1a",
-            marginBottom: "12px",
-            lineHeight: 1.3,
-            transition: "color 0.38s ease",
-          }}
-        >
-          {step.title}
-        </h3>
+          <h3
+            style={{
+              fontSize: isMobile ? "13px" : "14px",
+              fontWeight: "800",
+              textTransform: "uppercase",
+              letterSpacing: "0.08em",
+              color: hovered ? "#fff" : "#1a1a1a",
+              marginBottom: "8px",
+              lineHeight: 1.3,
+              transition: "color 0.38s ease",
+              margin: `0 0 ${isMobile ? "6px" : "12px"} 0`,
+            }}
+          >
+            {step.title}
+          </h3>
 
-        <p
-          style={{
-            fontSize: "13px",
-            lineHeight: "1.7",
-            color: hovered ? "rgba(255,255,255,0.85)" : "#666",
-            transition: "color 0.38s ease",
-          }}
-        >
-          {step.desc}
-        </p>
+          <p
+            style={{
+              fontSize: isMobile ? "12px" : "13px",
+              lineHeight: "1.7",
+              color: hovered ? "rgba(255,255,255,0.85)" : "#666",
+              transition: "color 0.38s ease",
+              margin: 0,
+            }}
+          >
+            {step.desc}
+          </p>
+        </div>
 
         {/* Bottom accent line */}
         <div
@@ -182,12 +204,20 @@ function StepCard({ step, index, inView }) {
 
 export default function DetailedArchitectProcess() {
   const [sectionRef, inView] = useInView(0.1);
+  const width = useWindowWidth();
+
+  const isMobile = width < 640;
+  const isTablet = width >= 640 && width < 1024;
+  const isDesktop = width >= 1024;
+
+  // Grid columns per breakpoint
+  const gridCols = isMobile ? "1fr" : isTablet ? "repeat(2, 1fr)" : "repeat(5, 1fr)";
 
   return (
     <section
       ref={sectionRef}
       style={{
-        padding: "80px 0",
+        padding: isMobile ? "60px 0 72px" : "80px 0",
         background: "#ffffff",
         fontFamily: "'Trebuchet MS', 'Gill Sans', sans-serif",
       }}
@@ -207,13 +237,23 @@ export default function DetailedArchitectProcess() {
         }
       `}</style>
 
-      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}>
+      <div
+        style={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+          padding: isMobile ? "0 16px" : "0 24px",
+        }}
+      >
         {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: "64px" }}>
-          
+        <div
+          style={{
+            textAlign: "center",
+            marginBottom: isMobile ? "40px" : "64px",
+          }}
+        >
           <h2
             style={{
-              fontSize: "clamp(28px, 4vw, 42px)",
+              fontSize: isMobile ? "clamp(22px, 6vw, 30px)" : "clamp(28px, 4vw, 42px)",
               fontWeight: "700",
               textTransform: "uppercase",
               letterSpacing: "0.06em",
@@ -229,7 +269,7 @@ export default function DetailedArchitectProcess() {
             style={{
               marginTop: "14px",
               color: "#888",
-              fontSize: "15px",
+              fontSize: isMobile ? "13px" : "15px",
               letterSpacing: "0.04em",
               animation: inView ? "titleReveal 0.7s ease 0.28s both" : "none",
               opacity: inView ? 1 : 0,
@@ -239,60 +279,70 @@ export default function DetailedArchitectProcess() {
           </p>
         </div>
 
-        {/* Connector line (desktop) */}
-        <div
-          style={{
-            position: "relative",
-            marginBottom: "0",
-          }}
-        >
-          <div
-            style={{
-              position: "absolute",
-              top: "38px",
-              left: "10%",
-              right: "10%",
-              height: "2px",
-              background: "linear-gradient(90deg, transparent, #d85c26 20%, #d85c26 80%, transparent)",
-              transformOrigin: "left center",
-              transform: inView ? "scaleX(1)" : "scaleX(0)",
-              transition: "transform 1.2s cubic-bezier(0.22,1,0.36,1) 0.3s",
-              opacity: 0.3,
-              zIndex: 0,
-              pointerEvents: "none",
-            }}
-          />
+        {/* Connector line — desktop only */}
+        <div style={{ position: "relative" }}>
+          {isDesktop && (
+            <div
+              style={{
+                position: "absolute",
+                top: "38px",
+                left: "10%",
+                right: "10%",
+                height: "2px",
+                background: "linear-gradient(90deg, transparent, #d85c26 20%, #d85c26 80%, transparent)",
+                transformOrigin: "left center",
+                transform: inView ? "scaleX(1)" : "scaleX(0)",
+                transition: "transform 1.2s cubic-bezier(0.22,1,0.36,1) 0.3s",
+                opacity: 0.3,
+                zIndex: 0,
+                pointerEvents: "none",
+              }}
+            />
+          )}
+
+          {/* Vertical connector line — mobile only */}
+          {isMobile && (
+            <div
+              style={{
+                position: "absolute",
+                top: "28px",
+                bottom: "28px",
+                left: "27px", // aligns with center of icon circle (56px/2)
+                width: "2px",
+                background: "linear-gradient(180deg, transparent, #d85c26 10%, #d85c26 90%, transparent)",
+                opacity: 0.25,
+                zIndex: 0,
+                pointerEvents: "none",
+                transform: inView ? "scaleY(1)" : "scaleY(0)",
+                transformOrigin: "top center",
+                transition: "transform 1.2s cubic-bezier(0.22,1,0.36,1) 0.3s",
+              }}
+            />
+          )}
 
           {/* Cards grid */}
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(5, 1fr)",
-              gap: "20px",
+              gridTemplateColumns: gridCols,
+              gap: isMobile ? "12px" : "20px",
               position: "relative",
               zIndex: 1,
             }}
           >
             {steps.map((step, i) => (
-              <StepCard key={i} step={step} index={i} inView={inView} />
+              <StepCard
+                key={i}
+                step={step}
+                index={i}
+                inView={inView}
+                isMobile={isMobile}
+                isTablet={isTablet}
+              />
             ))}
           </div>
         </div>
       </div>
-
-      {/* Responsive styles */}
-      <style>{`
-        @media (max-width: 900px) {
-          .process-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-          }
-        }
-        @media (max-width: 520px) {
-          .process-grid {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

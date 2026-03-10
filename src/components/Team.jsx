@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 
-const cn = (...inputs) => inputs.filter(Boolean).join(" ");
-
 function useInView(threshold = 0.1) {
   const ref = useRef(null);
   const [inView, setInView] = useState(false);
@@ -61,7 +59,7 @@ function TeamCard({ member, index }) {
   return (
     <div
       ref={ref}
-      className="team-card fade-up"
+      className="team-card"
       style={{
         opacity: inView ? 1 : 0,
         transform: inView ? "translateY(0)" : "translateY(40px)",
@@ -121,7 +119,6 @@ export default function Team({ title = "The Team" }) {
           padding: 60px 40px;
         }
 
-        /* Subtle grid BG */
         .team-section::before {
           content: '';
           position: absolute;
@@ -133,7 +130,6 @@ export default function Team({ title = "The Team" }) {
           pointer-events: none;
         }
 
-        /* Ghost watermark */
         .team-watermark {
           position: absolute;
           right: -2rem;
@@ -192,9 +188,7 @@ export default function Team({ title = "The Team" }) {
         }
         .t-heading span { color: #d85c26; }
 
-        .header-right {
-          max-width: 360px;
-        }
+        .header-right { max-width: 360px; }
         .t-subhead {
           font-size: 0.92rem;
           color: #131313;
@@ -204,7 +198,6 @@ export default function Team({ title = "The Team" }) {
           padding-left: 18px;
         }
 
-        /* Line expand */
         .line-expand-h {
           height: 1px;
           background: linear-gradient(to right, #d85c26, transparent);
@@ -223,10 +216,7 @@ export default function Team({ title = "The Team" }) {
           z-index: 2;
         }
 
-        @media (max-width: 1100px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 600px)  { .team-grid { grid-template-columns: 1fr; } }
-
-        /* Stagger even cards */
+        /* Stagger even cards — desktop only */
         .team-card:nth-child(even) { margin-top: 40px; }
 
         /* ── Card ── */
@@ -244,7 +234,6 @@ export default function Team({ title = "The Team" }) {
           border-color: rgba(216,92,38,0.25);
         }
 
-        /* Image */
         .card-img-wrap {
           position: relative;
           aspect-ratio: 3 / 4;
@@ -259,7 +248,6 @@ export default function Team({ title = "The Team" }) {
         }
         .team-card:hover .card-img { transform: scale(1.07); }
 
-        /* Overlay on hover */
         .card-overlay {
           position: absolute;
           inset: 0;
@@ -276,7 +264,7 @@ export default function Team({ title = "The Team" }) {
 
         .overlay-bio {
           font-size: 0.8rem;
-          color: rgba(255, 255, 255, 0.96);
+          color: rgba(255,255,255,0.96);
           line-height: 1.7;
           font-weight: 300;
         }
@@ -295,7 +283,6 @@ export default function Team({ title = "The Team" }) {
         }
         .soc-btn:hover { border-color: #d85c26; color: #d85c26; background: rgba(216,92,38,0.1); }
 
-        /* Exp badge */
         .exp-badge {
           position: absolute;
           top: 14px; left: 14px;
@@ -309,13 +296,12 @@ export default function Team({ title = "The Team" }) {
           padding: 4px 10px;
         }
 
-        /* Specialty strip */
         .specialty-strip {
           position: absolute;
           top: 14px; right: 0;
           background: rgba(0,0,0,0.55);
           backdrop-filter: blur(4px);
-          color: rgb(255, 255, 255);
+          color: rgb(255,255,255);
           font-size: 0.6rem;
           letter-spacing: 0.18em;
           text-transform: uppercase;
@@ -323,7 +309,6 @@ export default function Team({ title = "The Team" }) {
           font-weight: 400;
         }
 
-        /* Card body */
         .card-body {
           padding: 20px 20px 16px;
           display: flex;
@@ -367,7 +352,6 @@ export default function Team({ title = "The Team" }) {
         }
         .team-card:hover .card-number { color: rgba(216,92,38,0.1); }
 
-        /* Bottom bar */
         .card-bar {
           height: 2px;
           background: #d85c26;
@@ -377,7 +361,6 @@ export default function Team({ title = "The Team" }) {
         }
         .team-card:hover .card-bar { transform: scaleX(1); }
 
-        /* ── Footer note ── */
         .team-footer {
           text-align: center;
           margin-top: 64px;
@@ -393,10 +376,12 @@ export default function Team({ title = "The Team" }) {
           letter-spacing: 0.12em;
           text-transform: uppercase;
           font-weight: 400;
+          flex-wrap: wrap;
+          justify-content: center;
+          text-align: center;
         }
-        .footer-dash { width: 32px; height: 1px; background: #d85c26; }
+        .footer-dash { width: 32px; height: 1px; background: #d85c26; flex-shrink: 0; }
 
-        /* Header animation */
         .h-fade {
           opacity: 0;
           transform: translateY(24px);
@@ -406,6 +391,65 @@ export default function Team({ title = "The Team" }) {
         .hd1 { transition-delay: 0.05s; }
         .hd2 { transition-delay: 0.18s; }
         .hd3 { transition-delay: 0.3s; }
+
+        /* ── TABLET: 2×2 grid ── */
+        @media (max-width: 1100px) and (min-width: 601px) {
+          .team-section { padding: 48px 28px; }
+          .team-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+          }
+          /* Remove stagger in grid layout */
+          .team-card:nth-child(even) { margin-top: 0 !important; }
+          .team-header { margin-bottom: 44px; }
+          .header-right { max-width: 100%; }
+        }
+
+        /* ── MOBILE: single column ── */
+        @media (max-width: 600px) {
+          .team-section { padding: 48px 16px; }
+
+          .team-grid {
+            grid-template-columns: 1fr;
+            gap: 16px;
+          }
+          /* Remove stagger */
+          .team-card:nth-child(even) { margin-top: 0 !important; }
+
+          /* Make card horizontal on mobile */
+          .team-card {
+            display: grid;
+            grid-template-rows: auto auto auto;
+          }
+
+          /* Shorter image on mobile */
+          .card-img-wrap {
+            aspect-ratio: 16 / 9;
+          }
+
+          .team-header {
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 32px;
+            gap: 16px;
+          }
+          .header-right { max-width: 100%; }
+          .t-subhead { font-size: 0.83rem; }
+
+          .t-heading {
+            font-size: clamp(2rem, 9vw, 2.6rem) !important;
+          }
+          .t-label { font-size: 0.75rem; }
+
+          .card-body { padding: 16px; }
+          .member-name { font-size: 1rem; }
+
+          .team-footer { margin-top: 40px; }
+          .footer-note { font-size: 0.7rem; gap: 8px; }
+
+          /* Watermark too large on mobile */
+          .team-watermark { font-size: 5rem; right: -1rem; bottom: -2rem; }
+        }
       `}</style>
 
       <section className="team-section">

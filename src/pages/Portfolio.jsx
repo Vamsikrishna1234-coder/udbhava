@@ -24,8 +24,6 @@ const PROJECTS = [
     tag: "Architecture",
     year: "2024",
     location: "New York, USA",
-    description:
-      "A 72-storey glass tower that redefines the city skyline. The faceted façade dynamically responds to light conditions, creating a living landmark that shifts character from dawn to dusk.",
     cover: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1400&q=85",
     images: [
       "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80",
@@ -41,8 +39,6 @@ const PROJECTS = [
     tag: "Architecture",
     year: "2023",
     location: "Paris, France",
-    description:
-      "A 12-building campus that reinterprets European urban density. Stone, glass, and bronze define each elevation — a network of covered arcades and courtyards creates a pedestrian-friendly quarter within the city.",
     cover: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1400&q=85",
     images: [
       "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80",
@@ -58,8 +54,6 @@ const PROJECTS = [
     tag: "Luxury",
     year: "2023",
     location: "Amalfi Coast, Italy",
-    description:
-      "A cliff-side villa where every room frames the Tyrrhenian Sea. Hand-plastered walls, reclaimed olive wood, and bespoke ironwork create a dialogue between ancient craft and contemporary living.",
     cover: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=1400&q=85",
     images: [
       "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
@@ -75,8 +69,6 @@ const PROJECTS = [
     tag: "Corporate",
     year: "2022",
     location: "Frankfurt, Germany",
-    description:
-      "The financial district's new centrepiece — a 200,000 m² campus integrating offices, conference centre, and public plaza. The double-skin glass facade achieves LEED Platinum certification.",
     cover: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1400&q=85",
     images: [
       "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
@@ -92,8 +84,6 @@ const PROJECTS = [
     tag: "Luxury",
     year: "2022",
     location: "Malibu, USA",
-    description:
-      "A 1,200 m² cliff-top villa commanding 270° ocean views. Cantilevered terraces, an infinity pool that meets the horizon, and a seamless indoor-outdoor floor plan define this Pacific benchmark.",
     cover: "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=1400&q=85",
     images: [
       "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
@@ -109,8 +99,6 @@ const PROJECTS = [
     tag: "Interior",
     year: "2022",
     location: "Barcelona, Spain",
-    description:
-      "A waterfront commercial hub where every workspace commands a view of the Mediterranean. Curved glazing, marine-grade materials, and a rooftop garden blur the boundary between work and leisure.",
     cover: "https://images.unsplash.com/photo-1554435493-93422e8220c8?w=1400&q=85",
     images: [
       "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80",
@@ -277,13 +265,7 @@ function ProjectDetail({ project, onClose }) {
 
       {/* DESCRIPTION ROW */}
       <div style={{ padding: "0 28px 16px", display: "flex", gap: 32, flexWrap: "wrap" }}>
-        <p style={{
-          fontFamily: "'Raleway', sans-serif", fontSize: 13, lineHeight: 1.85,
-          color: "rgba(255,255,255,0.42)", fontWeight: 300, margin: 0,
-          maxWidth: 580, flex: "1 1 260px",
-        }}>
-          {project.description}
-        </p>
+        
         <div style={{ display: "flex", gap: 28, flexWrap: "wrap" }}>
           {[["Category", project.category], ["Type", project.tag], ["Location", project.location], ["Year", project.year]].map(([l, v]) => (
             <div key={l}>

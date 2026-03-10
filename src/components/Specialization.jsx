@@ -46,35 +46,39 @@ const services = [
   },
 ];
 
+function useWindowWidth() {
+  const [width, setWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 1200
+  );
+  useEffect(() => {
+    const handler = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handler);
+    return () => window.removeEventListener("resize", handler);
+  }, []);
+  return width;
+}
+
 export default function SpecializationSection() {
   const [active, setActive] = useState(0);
   const timerRef = useRef(null);
+  const width = useWindowWidth();
 
-  // Auto-advance every 2 seconds
+  const isMobile = width < 640;
+  const isTablet = width >= 640 && width < 1024;
+  const isDesktop = width >= 1024;
+
   useEffect(() => {
-    const startTimer = () => {
-      timerRef.current = setInterval(() => {
-        setActive((prev) => (prev + 1) % services.length);
-      }, 2500);
-    };
-
-    startTimer();
-
-    // Cleanup on unmount
+    timerRef.current = setInterval(() => {
+      setActive((prev) => (prev + 1) % services.length);
+    }, 2500);
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
   }, []);
 
-  // Reset timer when user manually selects a card
   const handleSelect = (index) => {
     setActive(index);
-    
-    // Clear existing timer and restart with 2 seconds
-    if (timerRef.current) {
-      clearInterval(timerRef.current);
-    }
-    
+    if (timerRef.current) clearInterval(timerRef.current);
     timerRef.current = setInterval(() => {
       setActive((prev) => (prev + 1) % services.length);
     }, 2500);
@@ -92,17 +96,16 @@ export default function SpecializationSection() {
         position: "relative",
         width: "100%",
         minHeight: "100vh",
-        backgroundImage:
-          "url(" + img1 + ")",
+        backgroundImage: "url(" + img1 + ")",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        padding: "clamp(20px, 5vw, 80px) 0",
+        padding: isMobile ? "60px 0 80px" : "clamp(20px, 5vw, 80px) 0",
         overflow: "hidden",
         color: "#1a1a1a",
       }}
     >
-      {/* Darker overlay for better text contrast on full bg image */}
+      {/* Overlay */}
       <div
         style={{
           position: "absolute",
@@ -112,18 +115,17 @@ export default function SpecializationSection() {
         }}
       />
 
-      {/* Main content container */}
       <div
         style={{
           position: "relative",
           zIndex: 1,
           maxWidth: "1200px",
           margin: "0 auto",
-          padding: "0 24px",
+          padding: isMobile ? "0 16px" : "0 24px",
         }}
       >
         {/* Header */}
-        <div style={{ marginBottom: "60px", textAlign: "center" }}>
+        <div style={{ marginBottom: isMobile ? "36px" : "60px", textAlign: "center" }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -141,7 +143,7 @@ export default function SpecializationSection() {
             >
               <span
                 style={{
-                  fontSize: "15px",
+                  fontSize: isMobile ? "12px" : "15px",
                   fontWeight: 600,
                   letterSpacing: "0.3em",
                   textTransform: "uppercase",
@@ -154,11 +156,12 @@ export default function SpecializationSection() {
             <h2
               style={{
                 fontFamily: "'Cormorant Garamond', serif",
-                fontSize: "clamp(40px, 7vw, 45px)",
+                fontSize: isMobile ? "clamp(32px, 9vw, 40px)" : "clamp(40px, 7vw, 45px)",
                 fontWeight: 600,
                 color: "#fff",
                 lineHeight: 1.05,
                 textShadow: "0 4px 12px rgba(0,0,0,0.4)",
+                margin: 0,
               }}
             >
               Our <em style={{ color: "#d85c26", fontStyle: "italic" }}>Specializations</em>
@@ -166,13 +169,17 @@ export default function SpecializationSection() {
           </motion.div>
         </div>
 
-        {/* Horizontal Cards Selector */}
+        {/* ── SERVICE CARDS ── */}
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-            gap: "24px",
-            marginBottom: "40px",
+            gridTemplateColumns: isMobile
+              ? "repeat(2, 1fr)"           // 2×2 on mobile
+              : isTablet
+              ? "repeat(2, 1fr)"           // 2×2 on tablet
+              : "repeat(auto-fit, minmax(240px, 1fr))", // 4 across on desktop
+            gap: isMobile ? "12px" : "24px",
+            marginBottom: isMobile ? "20px" : "40px",
           }}
         >
           {services.map((sv, i) => {
@@ -182,13 +189,14 @@ export default function SpecializationSection() {
             return (
               <motion.div
                 key={sv.id}
-                whileHover={{ scale: 1.05, y: -10 }}
+                whileHover={isDesktop ? { scale: 1.05, y: -10 } : {}}
+                whileTap={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 onClick={() => handleSelect(i)}
                 style={{
                   cursor: "pointer",
-                  padding: "32px 24px",
-                  borderRadius: "20px",
+                  padding: isMobile ? "20px 14px" : "32px 24px",
+                  borderRadius: isMobile ? "14px" : "20px",
                   background: isActive ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.75)",
                   backdropFilter: "blur(10px)",
                   border: isActive ? "2px solid #d85c26" : "1px solid rgba(255,255,255,0.3)",
@@ -198,42 +206,46 @@ export default function SpecializationSection() {
                   textAlign: "center",
                 }}
               >
-                <div style={{ marginBottom: "20px" }}>
+                <div style={{ marginBottom: isMobile ? "12px" : "20px" }}>
                   <div
                     style={{
-                      width: "64px",
-                      height: "64px",
+                      width: isMobile ? "48px" : "64px",
+                      height: isMobile ? "48px" : "64px",
                       margin: "0 auto",
                       borderRadius: "50%",
-                      border: `2.5px solid ${isActive ? "#d85c26" : "#d85c26"}`,
+                      border: "2.5px solid #d85c26",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
                       background: isActive ? "#d85c26" : "rgba(216,92,38,0.1)",
                     }}
                   >
-                    <Icon size={32} color={isActive ? "#fff" : "#d85c26"} strokeWidth={1.5} />
+                    <Icon
+                      size={isMobile ? 22 : 32}
+                      color={isActive ? "#fff" : "#d85c26"}
+                      strokeWidth={1.5}
+                    />
                   </div>
                 </div>
+
                 <h3
                   style={{
                     fontFamily: "'Cormorant Garamond', serif",
-                    fontSize: "clamp(20px, 2.5vw, 28px)",
+                    fontSize: isMobile ? "16px" : "clamp(20px, 2.5vw, 28px)",
                     color: isActive ? "#d85c26" : "#1a1a1a",
-                    marginBottom: "8px",
+                    marginBottom: "6px",
+                    margin: "0 0 6px 0",
                   }}
                 >
                   {sv.title}
                 </h3>
-                <p
-                  style={{
-                    fontSize: "14px",
-                    color: "#555",
-                    fontWeight: 500,
-                  }}
-                >
-                  {sv.tagline}
-                </p>
+
+                {/* Hide tagline on mobile to save space */}
+                {!isMobile && (
+                  <p style={{ fontSize: "14px", color: "#555", fontWeight: 500, margin: 0 }}>
+                    {sv.tagline}
+                  </p>
+                )}
 
                 {isActive && (
                   <motion.div
@@ -241,7 +253,7 @@ export default function SpecializationSection() {
                     style={{
                       height: "4px",
                       background: "#d85c26",
-                      marginTop: "16px",
+                      marginTop: isMobile ? "10px" : "16px",
                       borderRadius: "2px",
                     }}
                     transition={{ type: "spring", stiffness: 400, damping: 30 }}
@@ -252,7 +264,7 @@ export default function SpecializationSection() {
           })}
         </div>
 
-        {/* Animated Detail Panel */}
+        {/* ── DETAIL PANEL ── */}
         <AnimatePresence mode="wait">
           <motion.div
             key={active}
@@ -263,12 +275,13 @@ export default function SpecializationSection() {
             style={{
               background: "rgba(255,255,255,0.92)",
               backdropFilter: "blur(12px)",
-              borderRadius: "24px",
-              padding: "clamp(40px, 6vw, 30px)",
+              borderRadius: isMobile ? "16px" : "24px",
+              padding: isMobile ? "24px 20px" : isTablet ? "32px 28px" : "clamp(40px, 6vw, 30px)",
               boxShadow: "0 40px 100px rgba(0,0,0,0.25)",
+              // Stack on mobile & tablet, side-by-side on desktop
               display: "grid",
-              gridTemplateColumns: "1fr minmax(300px, 380px)",
-              gap: "clamp(40px, 6vw, 80px)",
+              gridTemplateColumns: isDesktop ? "1fr minmax(300px, 380px)" : "1fr",
+              gap: isMobile ? "24px" : isTablet ? "32px" : "clamp(40px, 6vw, 80px)",
             }}
           >
             {/* Left: Text */}
@@ -276,59 +289,64 @@ export default function SpecializationSection() {
               <p
                 style={{
                   fontFamily: "'Cormorant Garamond', serif",
-                  fontSize: "clamp(19px, 2.2vw, 24px)",
+                  fontSize: isMobile ? "17px" : "clamp(19px, 2.2vw, 24px)",
                   fontWeight: 300,
                   color: "#222",
                   lineHeight: 1.7,
-                  marginBottom: "24px",
+                  marginBottom: "20px",
                 }}
               >
                 {services[active].desc}
               </p>
               <p
                 style={{
-                  fontSize: "15px",
+                  fontSize: isMobile ? "13px" : "15px",
                   color: "#555",
                   lineHeight: 1.8,
-                  marginBottom: "36px",
+                  marginBottom: "28px",
                 }}
               >
                 {services[active].subdesc}
               </p>
 
-              <div style={{ display: "flex", gap: "32px", flexWrap: "wrap" }}>
-                <button
-                  style={{
-                    padding: "16px 36px",
-                    background: "#d85c26",
-                    color: "#fff",
-                    border: "none",
-                    borderRadius: "50px",
-                    fontSize: "14px",
-                    fontWeight: 600,
-                    letterSpacing: "0.15em",
-                    textTransform: "uppercase",
-                    cursor: "pointer",
-                    transition: "all 0.3s",
-                  }}
-                  onMouseEnter={(e) => (e.currentTarget.style.background = "#b84e20")}
-                  onMouseLeave={(e) => (e.currentTarget.style.background = "#d85c26")}
-                >
-                  Explore Service
-                </button>
-              </div>
+              <button
+                style={{
+                  padding: isMobile ? "13px 28px" : "16px 36px",
+                  background: "#d85c26",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: "50px",
+                  fontSize: isMobile ? "12px" : "14px",
+                  fontWeight: 600,
+                  letterSpacing: "0.15em",
+                  textTransform: "uppercase",
+                  cursor: "pointer",
+                  transition: "all 0.3s",
+                  width: isMobile ? "100%" : "auto",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = "#b84e20")}
+                onMouseLeave={(e) => (e.currentTarget.style.background = "#d85c26")}
+              >
+                Explore Service
+              </button>
             </div>
 
-            {/* Right: Stat + Quote */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
+            {/* Right: Stat + Quote — horizontal on mobile, stacked on larger */}
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: isMobile ? "1fr 1fr" : "1fr",
+                gap: isMobile ? "12px" : "28px",
+              }}
+            >
               <motion.div
                 initial={{ scale: 0.92, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 0.3, duration: 0.7 }}
                 style={{
-                  padding: "36px 28px",
+                  padding: isMobile ? "20px 12px" : "36px 28px",
                   background: "rgba(255,255,255,0.9)",
-                  borderRadius: "18px",
+                  borderRadius: isMobile ? "12px" : "18px",
                   textAlign: "center",
                   border: "1px solid #f0e8e0",
                 }}
@@ -336,21 +354,22 @@ export default function SpecializationSection() {
                 <div
                   style={{
                     fontFamily: "'Cormorant Garamond', serif",
-                    fontSize: "clamp(48px, 9vw, 72px)",
+                    fontSize: isMobile ? "clamp(36px, 10vw, 52px)" : "clamp(48px, 9vw, 72px)",
                     fontWeight: 700,
                     color: "#d85c26",
+                    lineHeight: 1,
                   }}
                 >
                   {services[active].stat}
                 </div>
                 <div
                   style={{
-                    fontSize: "13px",
+                    fontSize: isMobile ? "10px" : "13px",
                     fontWeight: 600,
                     letterSpacing: "0.2em",
                     textTransform: "uppercase",
                     color: "#777",
-                    marginTop: "12px",
+                    marginTop: "10px",
                   }}
                 >
                   {services[active].statLabel}
@@ -359,22 +378,25 @@ export default function SpecializationSection() {
 
               <div
                 style={{
-                  padding: "28px",
+                  padding: isMobile ? "16px 14px" : "28px",
                   borderLeft: "5px solid #d85c26",
                   background: "rgba(253,249,246,0.8)",
-                  borderRadius: "0 16px 16px 0",
+                  borderRadius: isMobile ? "0 12px 12px 0" : "0 16px 16px 0",
+                  display: "flex",
+                  alignItems: "center",
                 }}
               >
                 <p
                   style={{
                     fontFamily: "'Cormorant Garamond', serif",
-                    fontSize: "18px",
+                    fontSize: isMobile ? "15px" : "18px",
                     fontStyle: "italic",
                     color: "#444",
                     lineHeight: 1.6,
+                    margin: 0,
                   }}
                 >
-                  “{services[active].tagline}”
+                  "{services[active].tagline}"
                 </p>
               </div>
             </div>

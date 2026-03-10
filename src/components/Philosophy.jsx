@@ -1,6 +1,5 @@
-import React from "react";
 
-const cn = (...inputs) => inputs.filter(Boolean).join(" ");
+import React from "react";
 
 const values = [
   {
@@ -76,7 +75,6 @@ export default function Philosophy({ title = "Reason For Choosing Us" }) {
           overflow: hidden;
         }
 
-        /* Diagonal slash lines background */
         .phil-section::before {
           content: '';
           position: absolute;
@@ -110,14 +108,13 @@ export default function Philosophy({ title = "Reason For Choosing Us" }) {
           line-height: 1;
         }
 
-        /* Cards container — staggered vertical offset */
+        /* ── DESKTOP: horizontal flex with stagger ── */
         .cards-row {
           display: flex;
           gap: 20px;
           align-items: flex-start;
         }
 
-        /* Each card */
         .phil-card {
           flex: 1;
           background: #161616;
@@ -129,7 +126,7 @@ export default function Philosophy({ title = "Reason For Choosing Us" }) {
           transition: border-color 0.35s ease, box-shadow 0.35s ease;
         }
 
-        /* Stagger: even cards drop down */
+        /* Stagger: even cards drop down — desktop only */
         .phil-card:nth-child(even) {
           margin-top: 48px;
         }
@@ -139,7 +136,6 @@ export default function Philosophy({ title = "Reason For Choosing Us" }) {
           box-shadow: 0 0 40px rgba(216,92,38,0.08);
         }
 
-        /* Accent bar under icon */
         .card-accent {
           width: 36px;
           height: 2px;
@@ -147,23 +143,18 @@ export default function Philosophy({ title = "Reason For Choosing Us" }) {
           margin: 20px 0 18px;
           transition: width 0.4s ease;
         }
-        .phil-card:hover .card-accent {
-          width: 60px;
-        }
+        .phil-card:hover .card-accent { width: 60px; }
 
-        /* Icon wrapper — zoom deep on hover */
         .icon-wrap {
           color: rgba(255,255,255,0.75);
           display: inline-flex;
-          transition:
-            transform 0.18s cubic-bezier(0.4, 0, 0.2, 1),
-            color 0.18s ease;
+          transition: transform 0.18s cubic-bezier(0.4,0,0.2,1), color 0.18s ease;
           transform-origin: center center;
         }
         .phil-card:hover .icon-wrap {
           transform: scale(2.6);
           color: #d85c26;
-          animation: zoomPulse 0.32s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+          animation: zoomPulse 0.32s cubic-bezier(0.4,0,0.2,1) forwards;
         }
 
         @keyframes zoomPulse {
@@ -180,7 +171,6 @@ export default function Philosophy({ title = "Reason For Choosing Us" }) {
           overflow: hidden;
         }
 
-        /* Card title */
         .card-title {
           font-family: 'Barlow Condensed', sans-serif;
           font-weight: 700;
@@ -192,7 +182,6 @@ export default function Philosophy({ title = "Reason For Choosing Us" }) {
           margin-bottom: 6px;
           transition: color 0.3s ease;
         }
-        .phil-card:hover .card-title { color: #fff; }
 
         .card-sub {
           font-size: 0.8rem;
@@ -209,11 +198,8 @@ export default function Philosophy({ title = "Reason For Choosing Us" }) {
           font-weight: 300;
           transition: color 0.35s ease;
         }
-        .phil-card:hover .card-desc {
-          color: rgba(255,255,255,0.58);
-        }
+        .phil-card:hover .card-desc { color: rgba(255,255,255,0.58); }
 
-        /* Bottom row: arrow btn + big number */
         .card-footer {
           display: flex;
           align-items: flex-end;
@@ -248,11 +234,8 @@ export default function Philosophy({ title = "Reason For Choosing Us" }) {
           user-select: none;
           transition: color 0.35s ease;
         }
-        .phil-card:hover .card-number {
-          color: rgba(216,92,38,0.1);
-        }
+        .phil-card:hover .card-number { color: rgba(216,92,38,0.1); }
 
-        /* Top-right corner cut */
         .card-corner {
           position: absolute;
           top: 0; right: 0;
@@ -263,18 +246,81 @@ export default function Philosophy({ title = "Reason For Choosing Us" }) {
           transition: border-color 0.3s;
         }
 
-        @media (max-width: 768px) {
-          .cards-row { flex-direction: column; }
-          .phil-card:nth-child(even) { margin-top: 0; }
+        /* ── TABLET: 2×3 grid ── */
+        @media (max-width: 1023px) and (min-width: 640px) {
+          .cards-row {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            align-items: start;
+          }
+          /* Remove stagger on grid layout */
+          .phil-card:nth-child(even) {
+            margin-top: 0 !important;
+          }
+          /* Last card (5th) spans full row or sits naturally */
+          .phil-card:last-child {
+            grid-column: span 1;
+          }
+        }
+
+        /* ── MOBILE: single column ── */
+        @media (max-width: 639px) {
+          .cards-row {
+            display: flex !important;
+            flex-direction: column;
+            gap: 12px;
+          }
+          .phil-card:nth-child(even) {
+            margin-top: 0 !important;
+          }
+          .phil-card {
+            padding: 24px 20px 20px !important;
+          }
+          /* Horizontal layout inside card on mobile */
+          .phil-card-inner {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+          }
+          .icon-zone {
+            height: auto !important;
+            flex-shrink: 0;
+            width: 48px;
+          }
+          .icon-wrap svg {
+            width: 32px !important;
+            height: 32px !important;
+          }
+          .card-accent {
+            margin: 12px 0 10px !important;
+          }
+          .card-title {
+            font-size: 1rem !important;
+          }
+          .card-desc {
+            font-size: 0.78rem !important;
+          }
+          .card-footer {
+            margin-top: 16px !important;
+          }
+          .card-number {
+            font-size: 2.8rem !important;
+          }
+          .phil-heading {
+            font-size: clamp(1.7rem, 7vw, 2.2rem) !important;
+          }
         }
       `}</style>
 
-      <section className="phil-section py-24 md:py-32 px-6 md:px-12 lg:px-20">
+      <section
+        className="phil-section"
+        style={{ padding: "clamp(48px,8vw,96px) clamp(16px,4vw,80px)" }}
+      >
         <div style={{ maxWidth: "1300px", margin: "0 auto" }}>
 
           {/* Header */}
           <div className="text-center mb-16">
-            {/* Brand icon */}
             <div style={{ display: "flex", justifyContent: "center", marginBottom: "16px" }}>
               <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="26" cy="10" r="5" fill="#d85c26"/>

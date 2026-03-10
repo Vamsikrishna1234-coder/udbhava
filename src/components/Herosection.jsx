@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import img1 from "../assets/images/ig2.jpg";
@@ -15,6 +16,19 @@ function useFonts() {
       "https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Raleway:wght@300;400;500;600;700&display=swap";
     document.head.appendChild(link);
   }, []);
+}
+
+// ─── RESPONSIVE HOOK ───────────────────────────────────────────────────────────
+function useIsMobile(breakpoint = 768) {
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== "undefined" ? window.innerWidth < breakpoint : false
+  );
+  useEffect(() => {
+    const handler = () => setIsMobile(window.innerWidth < breakpoint);
+    window.addEventListener("resize", handler);
+    return () => window.removeEventListener("resize", handler);
+  }, [breakpoint]);
+  return isMobile;
 }
 
 // ─── SLIDE DATA ────────────────────────────────────────────────────────────────
@@ -78,7 +92,6 @@ const PinterestIcon = () => (
 );
 
 // ─── SIDEBAR ICON ITEM ─────────────────────────────────────────────────────────
-// Sidebar width NEVER stretches. Label floats outside as absolute overlay to the right.
 function SidebarItem({ icon, href, label }) {
   const [hovered, setHovered] = useState(false);
   return (
@@ -103,7 +116,6 @@ function SidebarItem({ icon, href, label }) {
           cursor: "pointer",
         }}
       >
-        {/* Icon spins 360° on hover — sidebar width stays fixed */}
         <motion.div
           animate={{ rotate: hovered ? 360 : 0 }}
           transition={{ duration: 0.45, ease: "easeInOut" }}
@@ -112,7 +124,6 @@ function SidebarItem({ icon, href, label }) {
         </motion.div>
       </a>
 
-      {/* Label floats OUTSIDE the sidebar as absolute overlay */}
       <AnimatePresence>
         {hovered && (
           <motion.span
@@ -233,10 +244,9 @@ function RightSidebar({ quote, onPrev, onNext }) {
         </svg>
       </div>
 
-      {/* Top accent line */}
       <div style={{ flex: 1, width: 2, background: "#d85b26db", maxHeight: 100 }} />
 
-      {/* Vertical quote — animates when slide changes */}
+      {/* Vertical quote */}
       <div style={{
         writingMode: "vertical-rl",
         transform: "rotate(180deg)",
@@ -268,12 +278,10 @@ function RightSidebar({ quote, onPrev, onNext }) {
         </AnimatePresence>
       </div>
 
-      {/* Bottom accent line */}
       <div style={{ flex: 1, width: 2, background: "#d85b26d6", maxHeight: 80 }} />
 
       {/* ▲ dot ▼ navigation */}
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flexShrink: 0 }}>
-
         <button
           onClick={onPrev}
           style={{
@@ -311,7 +319,6 @@ function RightSidebar({ quote, onPrev, onNext }) {
         >
           <ArrowDownIcon />
         </button>
-
       </div>
     </div>
   );
@@ -349,6 +356,7 @@ function ScrollDown() {
 export default function HeroSection() {
   useFonts();
   const [index, setIndex] = useState(0);
+  const isMobile = useIsMobile(768);
 
   // Auto-advance every 6 seconds
   useEffect(() => {
@@ -356,7 +364,6 @@ export default function HeroSection() {
     return () => clearInterval(t);
   }, []);
 
-  // Manual navigation — clicking resets the natural sequence from that point
   const goNext = () => setIndex(i => (i + 1) % SLIDES.length);
   const goPrev = () => setIndex(i => (i - 1 + SLIDES.length) % SLIDES.length);
 
@@ -393,7 +400,10 @@ export default function HeroSection() {
       <div style={{
         position: "relative", zIndex: 10,
         height: "100%", display: "flex", flexDirection: "column", justifyContent: "center",
-        paddingLeft: "calc(86px + 7%)", paddingRight: "calc(56px + 4%)", maxWidth: 820,
+        // On mobile: no left offset for sidebar, full-width with horizontal padding
+        paddingLeft: isMobile ? "5%" : "calc(86px + 7%)",
+        paddingRight: isMobile ? "5%" : "calc(56px + 4%)",
+        maxWidth: 820,
       }}>
         <AnimatePresence mode="wait">
           <motion.div
@@ -475,7 +485,10 @@ export default function HeroSection() {
 
       {/* ── SLIDE COUNTER bottom-right ── */}
       <div style={{
-        position: "absolute", bottom: 28, right: 80, zIndex: 10,
+        position: "absolute", bottom: 28,
+        // On mobile, no right sidebar offset needed
+        right: isMobile ? 20 : 80,
+        zIndex: 10,
         fontFamily: "'Raleway', sans-serif", letterSpacing: "0.12em",
         color: "rgba(255,255,255,0.55)", fontSize: 13,
         display: "flex", alignItems: "baseline", gap: 2,
@@ -490,9 +503,62 @@ export default function HeroSection() {
       {/* ── SCROLL DOWN ── */}
       <ScrollDown />
 
-      {/* ── SIDEBARS ── */}
-      <LeftSidebar />
-      <RightSidebar quote={slide.quote} onPrev={goPrev} onNext={goNext} />
+      {/* ── SIDEBARS — hidden on mobile ── */}
+      {!isMobile && <LeftSidebar />}
+      {!isMobile && <RightSidebar quote={slide.quote} onPrev={goPrev} onNext={goNext} />}
+
+      {/* ── MOBILE SLIDE NAVIGATION (arrows only, no sidebar) ── */}
+      {isMobile && (
+        <div style={{
+          position: "absolute", bottom: 28, left: "50%", transform: "translateX(-50%)",
+          zIndex: 10, display: "flex", alignItems: "center", gap: 16,
+          marginBottom: 70, // above scroll down
+        }}>
+          <button
+            onClick={goPrev}
+            style={{
+              width: 40, height: 40, borderRadius: "50%",
+              border: "1.5px solid rgba(255,255,255,0.5)",
+              background: "rgba(0,0,0,0.3)", cursor: "pointer",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              color: "#fff",
+            }}
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="14" height="14">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </button>
+          <button
+            onClick={goNext}
+            style={{
+              width: 40, height: 40, borderRadius: "50%",
+              border: "1.5px solid rgba(255,255,255,0.5)",
+              background: "rgba(0,0,0,0.3)", cursor: "pointer",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              color: "#fff",
+            }}
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="14" height="14">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
+        </div>
+      )}
     </section>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
