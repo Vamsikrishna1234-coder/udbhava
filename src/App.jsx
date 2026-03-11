@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Header from "../src/components/Header.jsx"
-import ScrollToTop from "../src/components/ScrolltoTop.jsx"
+import ScrollToTop from "../components/ScrollToTop.jsx"
 import Home from "../src/pages/Home.jsx"
 import AboutPage from "../src/pages/About.jsx"
 import ServicesPage from "../src/pages/Services.jsx"
