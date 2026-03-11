@@ -226,15 +226,15 @@ function LeftSidebar() {
         boxShadow: "2px 0 24px rgba(0,0,0,0.10)",
       }}
     >
-      <SidebarItem icon={<PhoneIcon />}     href="tel:+919876543210"            label="+91 98765 43210" />
+      <SidebarItem icon={<PhoneIcon />}     href="tel:+91 9966 559 219"            label="+91 9966 559 219" />
       <SidebarDivider />
-      <SidebarItem icon={<EmailIcon />}     href="mailto:udbhava@architect.com" label="udbhava@architect.com" />
+      <SidebarItem icon={<EmailIcon />}     href="mailto:udbhavaarchitect@gmail.com" label="udbhavaarchitect@gmail.com" />
       <SidebarDivider />
       <SidebarItem icon={<FacebookIcon />}  href="https://facebook.com"         label="Facebook" />
       <SidebarDivider />
       <SidebarItem icon={<TwitterIcon />}   href="https://twitter.com"          label="Twitter" />
       <SidebarDivider />
-      <SidebarItem icon={<InstagramIcon />} href="https://instagram.com"        label="Instagram" />
+      <SidebarItem icon={<InstagramIcon />} href="https://www.instagram.com/udbhavaarchitects/"  label="Instagram" />
       <SidebarDivider />
       <SidebarItem icon={<PinterestIcon />} href="https://pinterest.com"        label="Pinterest" />
     </div>

@@ -91,7 +91,7 @@ Call Us
 </h3>
 
 <p className="text-gray-300">
-+91 98765 43210
++91 9966 559 219
 </p>
 
 </div>
@@ -122,23 +122,23 @@ Mon – Sat : 9:00 AM – 6:30 PM
 
 <div className="flex gap-4">
 
-<a href="#" className="w-10 h-10 flex items-center justify-center border border-gray-600 rounded-full hover:bg-[#d85b26] hover:border-[#d85b26] transition">
+<a href="https://www.instagram.com/udbhavaarchitects/" target="_blank" className="w-10 h-10 flex items-center justify-center border border-gray-600 rounded-full hover:bg-[#d85b26] hover:border-[#d85b26] transition">
 <FaInstagram size={16}/>
 </a>
 
-<a href="#" className="w-10 h-10 flex items-center justify-center border border-gray-600 rounded-full hover:bg-[#d85b26] hover:border-[#d85b26] transition">
+<a href="https://facebook.com" target="_blank"  className="w-10 h-10 flex items-center justify-center border border-gray-600 rounded-full hover:bg-[#d85b26] hover:border-[#d85b26] transition">
 <FaFacebookF size={16}/>
 </a>
 
-<a href="#" className="w-10 h-10 flex items-center justify-center border border-gray-600 rounded-full hover:bg-[#d85b26] hover:border-[#d85b26] transition">
+<a href="https://twitter.com" target="_blank" className="w-10 h-10 flex items-center justify-center border border-gray-600 rounded-full hover:bg-[#d85b26] hover:border-[#d85b26] transition">
 <FaXTwitter size={16}/>
 </a>
 
-<a href="#" className="w-10 h-10 flex items-center justify-center border border-gray-600 rounded-full hover:bg-[#d85b26] hover:border-[#d85b26] transition">
+<a href="https://youtube.com" target="_blank" className="w-10 h-10 flex items-center justify-center border border-gray-600 rounded-full hover:bg-[#d85b26] hover:border-[#d85b26] transition">
 <FaYoutube size={16}/>
 </a>
 
-<a href="#" className="w-10 h-10 flex items-center justify-center border border-gray-600 rounded-full hover:bg-[#d85b26] hover:border-[#d85b26] transition">
+<a href="https://www.linkedin.com/in/udbhava-architects-6a9249239/" target="_blank" className="w-10 h-10 flex items-center justify-center border border-gray-600 rounded-full hover:bg-[#d85b26] hover:border-[#d85b26] transition">
 <FaLinkedinIn size={16}/>
 </a>
 
