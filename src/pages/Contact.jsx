@@ -104,7 +104,7 @@ Email
 </h3>
 
 <p className="text-gray-300">
-udbhava@architect.com
+udbhavaarchitect@gmail.com
 </p>
 
 </div>

@@ -6,10 +6,6 @@ import img1 from "../assets/images/ig2.jpg";
 import img2 from "../assets/images/ig1.jpg";
 import img3 from "../assets/images/ig4.jpg";
 
-
-
-
-// Google Fonts loader
 function useFonts() {
   useEffect(() => {
     if (document.getElementById("hero-fonts")) return;
@@ -22,7 +18,6 @@ function useFonts() {
   }, []);
 }
 
-// ─── RESPONSIVE HOOK ───────────────────────────────────────────────────────────
 function useIsMobile(breakpoint = 768) {
   const [isMobile, setIsMobile] = useState(
     typeof window !== "undefined" ? window.innerWidth < breakpoint : false
@@ -35,7 +30,6 @@ function useIsMobile(breakpoint = 768) {
   return isMobile;
 }
 
-// ─── SLIDE DATA ────────────────────────────────────────────────────────────────
 const SLIDES = [
   {
     subtitle: "FROM CONCEPT TO BETTER LIVING",
@@ -60,7 +54,56 @@ const SLIDES = [
   },
 ];
 
-// ─── ICON COMPONENTS ───────────────────────────────────────────────────────────
+// ── DIRECTION-AWARE BACKGROUND VARIANTS ───────────────────────────────────────
+const bgVariants = {
+  enter: (dir) => ({
+    y: dir > 0 ? "8%" : "-8%",
+    opacity: 0,
+    scale: 1.12,
+  }),
+  center: {
+    y: 0,
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 1.6, ease: [0.76, 0, 0.24, 1] },
+  },
+  exit: (dir) => ({
+    y: dir > 0 ? "-8%" : "8%",
+    opacity: 0,
+    scale: 1.04,
+    transition: { duration: 1.0, ease: [0.76, 0, 0.24, 1] },
+  }),
+};
+
+// ── STAGGER CONTAINER for text ─────────────────────────────────────────────────
+const textContainer = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.11, delayChildren: 0.2 },
+  },
+  exit: {
+    transition: { staggerChildren: 0.07, staggerDirection: -1 },
+  },
+};
+
+// ── EACH TEXT ELEMENT slides up from bottom ────────────────────────────────────
+const textLine = {
+  hidden: { y: 48, opacity: 0, filter: "blur(5px)" },
+  show: {
+    y: 0,
+    opacity: 1,
+    filter: "blur(0px)",
+    transition: { duration: 0.72, ease: [0.22, 1, 0.36, 1] },
+  },
+  exit: {
+    y: -22,
+    opacity: 0,
+    filter: "blur(4px)",
+    transition: { duration: 0.32, ease: [0.55, 0, 1, 0.45] },
+  },
+};
+
+// ── ICON COMPONENTS ───────────────────────────────────────────────────────────
 const PhoneIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" width="18" height="18">
     <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
@@ -95,7 +138,6 @@ const PinterestIcon = () => (
   </svg>
 );
 
-// ─── SIDEBAR ICON ITEM ─────────────────────────────────────────────────────────
 function SidebarItem({ icon, href, label }) {
   const [hovered, setHovered] = useState(false);
   return (
@@ -164,44 +206,41 @@ function SidebarItem({ icon, href, label }) {
   );
 }
 
-// ─── DIVIDER ───────────────────────────────────────────────────────────────────
 function SidebarDivider() {
-  return (
-    <div style={{ width: 90, height: 20, background: "#e8e8e8" }} />
-  );
+  return <div style={{ width: 90, height: 20, background: "#e8e8e8" }} />;
 }
 
-// ─── LEFT SIDEBAR ──────────────────────────────────────────────────────────────
 function LeftSidebar() {
   return (
-    <div style={{
-      position: "absolute",
-      left: 0,
-      top: 480,
-      height: "50%",
-      zIndex: 10,
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      background: "#fff",
-      boxShadow: "2px 0 24px rgba(0,0,0,0.10)",
-    }}>
-      <SidebarItem icon={<PhoneIcon />}    href="tel:+91 98765 43210"           label="+91 98765 43210"   />
+    <div
+      style={{
+        position: "absolute",
+        left: 0,
+        top: 480,
+        height: "50%",
+        zIndex: 10,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        background: "#fff",
+        boxShadow: "2px 0 24px rgba(0,0,0,0.10)",
+      }}
+    >
+      <SidebarItem icon={<PhoneIcon />}     href="tel:+919876543210"            label="+91 98765 43210" />
       <SidebarDivider />
-      <SidebarItem icon={<EmailIcon />}    href="mailto:udbhava@architect.com"  label="udbhava@architect.com" />
+      <SidebarItem icon={<EmailIcon />}     href="mailto:udbhava@architect.com" label="udbhava@architect.com" />
       <SidebarDivider />
-      <SidebarItem icon={<FacebookIcon />} href="https://facebook.com"      label="Facebook"         />
+      <SidebarItem icon={<FacebookIcon />}  href="https://facebook.com"         label="Facebook" />
       <SidebarDivider />
-      <SidebarItem icon={<TwitterIcon />}  href="https://twitter.com"       label="Twitter"          />
+      <SidebarItem icon={<TwitterIcon />}   href="https://twitter.com"          label="Twitter" />
       <SidebarDivider />
-      <SidebarItem icon={<InstagramIcon />}href="https://instagram.com"     label="Instagram"        />
+      <SidebarItem icon={<InstagramIcon />} href="https://instagram.com"        label="Instagram" />
       <SidebarDivider />
-      <SidebarItem icon={<PinterestIcon />}href="https://pinterest.com"     label="Pinterest"        />
+      <SidebarItem icon={<PinterestIcon />} href="https://pinterest.com"        label="Pinterest" />
     </div>
   );
 }
 
-// ─── ARROW ICONS ───────────────────────────────────────────────────────────────
 const ArrowUpIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" width="14" height="14">
     <polyline points="18 15 12 9 6 15" />
@@ -213,33 +252,35 @@ const ArrowDownIcon = () => (
   </svg>
 );
 
-// ─── RIGHT SIDEBAR ─────────────────────────────────────────────────────────────
 function RightSidebar({ quote, onPrev, onNext }) {
   return (
-    <div style={{
-      position: "absolute",
-      right: 0,
-      top: 0,
-      height: "100%",
-      zIndex: 100,
-      width: 90,
-      background: "#fff",
-      boxShadow: "-2px 0 24px rgba(0,0,0,0.10)",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "space-between",
-    }}>
-      {/* Top decorative dark square with gold asterisk */}
-      <div style={{
-        width: 56,
-        height: 56,
-        background: "#000000",
+    <div
+      style={{
+        position: "absolute",
+        right: 0,
+        top: 0,
+        height: "100%",
+        zIndex: 100,
+        width: 90,
+        background: "#fff",
+        boxShadow: "-2px 0 24px rgba(0,0,0,0.10)",
         display: "flex",
+        flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center",
-        flexShrink: 0,
-      }}>
+        justifyContent: "space-between",
+      }}
+    >
+      <div
+        style={{
+          width: 56,
+          height: 56,
+          background: "#000",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexShrink: 0,
+        }}
+      >
         <svg viewBox="0 0 24 24" width="20" height="20">
           <line x1="12" y1="2" x2="12" y2="22" stroke="#c8922a" strokeWidth="2" strokeLinecap="round" />
           <line x1="2" y1="12" x2="22" y2="12" stroke="#c8922a" strokeWidth="2" strokeLinecap="round" />
@@ -250,23 +291,25 @@ function RightSidebar({ quote, onPrev, onNext }) {
 
       <div style={{ flex: 1, width: 2, background: "#d85b26db", maxHeight: 100 }} />
 
-      {/* Vertical quote */}
-      <div style={{
-        writingMode: "vertical-rl",
-        transform: "rotate(180deg)",
-        padding: "16px 0",
-        flex: 1,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}>
+      <div
+        style={{
+          writingMode: "vertical-rl",
+          transform: "rotate(180deg)",
+          padding: "16px 0",
+          flex: 1,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          overflow: "hidden",
+        }}
+      >
         <AnimatePresence mode="wait">
           <motion.span
             key={quote}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
             style={{
               fontFamily: "'Raleway', sans-serif",
               fontSize: 15,
@@ -284,7 +327,6 @@ function RightSidebar({ quote, onPrev, onNext }) {
 
       <div style={{ flex: 1, width: 2, background: "#d85b26d6", maxHeight: 80 }} />
 
-      {/* ▲ dot ▼ navigation */}
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flexShrink: 0 }}>
         <button
           onClick={onPrev}
@@ -296,16 +338,18 @@ function RightSidebar({ quote, onPrev, onNext }) {
             color: "#020202", transition: "all 0.2s",
           }}
           onMouseEnter={e => { e.currentTarget.style.background = "#fdf8f3"; e.currentTarget.style.color = "#c8922a"; }}
-          onMouseLeave={e => { e.currentTarget.style.background = "#fff";    e.currentTarget.style.color = "#020202"; }}
+          onMouseLeave={e => { e.currentTarget.style.background = "#fff"; e.currentTarget.style.color = "#020202"; }}
         >
           <ArrowUpIcon />
         </button>
 
-        <div style={{
-          width: 66, height: 26,
-          display: "flex", alignItems: "center", justifyContent: "center",
-          borderTop: "1px solid #e8e8e8", borderBottom: "1px solid #e8e8e8",
-        }}>
+        <div
+          style={{
+            width: 66, height: 26,
+            display: "flex", alignItems: "center", justifyContent: "center",
+            borderTop: "1px solid #e8e8e8", borderBottom: "1px solid #e8e8e8",
+          }}
+        >
           <div style={{ width: 6, height: 6, borderRadius: "50%", border: "1.5px solid #aaa" }} />
         </div>
 
@@ -316,10 +360,10 @@ function RightSidebar({ quote, onPrev, onNext }) {
             border: "none", borderBottom: "1px solid #e8e8e8",
             background: "#fff", cursor: "pointer",
             display: "flex", alignItems: "center", justifyContent: "center",
-            color: "#000000", transition: "all 0.2s",
+            color: "#000", transition: "all 0.2s",
           }}
           onMouseEnter={e => { e.currentTarget.style.background = "#fdf8f3"; e.currentTarget.style.color = "#c8922a"; }}
-          onMouseLeave={e => { e.currentTarget.style.background = "#fff";    e.currentTarget.style.color = "#000000"; }}
+          onMouseLeave={e => { e.currentTarget.style.background = "#fff"; e.currentTarget.style.color = "#000"; }}
         >
           <ArrowDownIcon />
         </button>
@@ -328,65 +372,105 @@ function RightSidebar({ quote, onPrev, onNext }) {
   );
 }
 
-// ─── SCROLL DOWN INDICATOR ─────────────────────────────────────────────────────
 function ScrollDown() {
   return (
-    <div style={{
-      position: "absolute", bottom: 28, left: "50%", transform: "translateX(-50%)",
-      zIndex: 10, display: "flex", flexDirection: "column", alignItems: "center", gap: 8,
-    }}>
-      <div style={{
-        width: 26, height: 40,
-        border: "2px solid rgba(255,255,255,0.6)", borderRadius: 13,
-        display: "flex", alignItems: "flex-start", justifyContent: "center", paddingTop: 6,
-      }}>
+    <div
+      style={{
+        position: "absolute", bottom: 28, left: "50%", transform: "translateX(-50%)",
+        zIndex: 10, display: "flex", flexDirection: "column", alignItems: "center", gap: 8,
+      }}
+    >
+      <div
+        style={{
+          width: 26, height: 40,
+          border: "2px solid rgba(255,255,255,0.6)", borderRadius: 13,
+          display: "flex", alignItems: "flex-start", justifyContent: "center", paddingTop: 6,
+        }}
+      >
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
           style={{ width: 3, height: 8, background: "rgba(255,255,255,0.8)", borderRadius: 2 }}
         />
       </div>
-      <span style={{
-        fontFamily: "'Raleway', sans-serif", fontSize: 10, fontWeight: 600,
-        letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.75)",
-      }}>
+      <span
+        style={{
+          fontFamily: "'Raleway', sans-serif", fontSize: 10, fontWeight: 600,
+          letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.75)",
+        }}
+      >
         Scroll Down
       </span>
     </div>
   );
 }
 
-// ─── MAIN HERO ─────────────────────────────────────────────────────────────────
+function ProgressBar({ duration, index }) {
+  return (
+    <div
+      style={{
+        position: "absolute", bottom: 0, left: 0,
+        width: "100%", height: 3,
+        background: "rgba(255,255,255,0.15)", zIndex: 20,
+      }}
+    >
+      <motion.div
+        key={`progress-${index}`}
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 1 }}
+        transition={{ duration: duration / 1000, ease: "linear" }}
+        style={{
+          height: "100%",
+          background: "#d85c26",
+          transformOrigin: "left center",
+        }}
+      />
+    </div>
+  );
+}
+
+// ── MAIN HERO ─────────────────────────────────────────────────────────────────
 export default function HeroSection() {
   useFonts();
-  const [index, setIndex] = useState(0);
-  const isMobile = useIsMobile(768);
-
-  // Auto-advance every 6 seconds
-  useEffect(() => {
-    const t = setInterval(() => setIndex(i => (i + 1) % SLIDES.length), 6000);
-    return () => clearInterval(t);
-  }, []);
   const navigate = useNavigate();
-  const goNext = () => setIndex(i => (i + 1) % SLIDES.length);
-  const goPrev = () => setIndex(i => (i - 1 + SLIDES.length) % SLIDES.length);
+  const isMobile = useIsMobile(768);
+  const INTERVAL = 5000;
+
+  // Store [index, direction] together so direction is always in sync
+  const [[index, direction], setSlide] = useState([0, 1]);
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      setSlide(([i]) => [(i + 1) % SLIDES.length, 1]);
+    }, INTERVAL);
+    return () => clearInterval(t);
+  }, [index]);
+
+  const goNext = () => setSlide(([i]) => [(i + 1) % SLIDES.length, 1]);
+  const goPrev = () => setSlide(([i]) => [(i - 1 + SLIDES.length) % SLIDES.length, -1]);
 
   const slide = SLIDES[index];
 
   return (
-    <section style={{
-      position: "relative", height: "100vh", width: "100%",
-      overflow: "hidden", background: "#111", fontFamily: "'Raleway', sans-serif",
-    }}>
-
-      {/* ── BACKGROUND IMAGE ── */}
-      <AnimatePresence mode="wait">
+    <section
+      style={{
+        position: "relative",
+        height: "100vh",
+        width: "100%",
+        overflow: "hidden",
+        background: "#111",
+        fontFamily: "'Raleway', sans-serif",
+      }}
+    >
+      {/* ── BACKGROUND — direction-aware parallax slide ── */}
+      <AnimatePresence custom={direction} mode="sync">
         <motion.div
-          key={index}
-          initial={{ opacity: 0, scale: 1.06 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 1.04 }}
-          transition={{ duration: 1.6, ease: "easeInOut" }}
+          key={`bg-${index}`}
+          custom={direction}
+          variants={bgVariants}
+          initial="enter"
+          animate="center"
+          exit="exit"
           style={{ position: "absolute", inset: 0 }}
         >
           <img
@@ -394,164 +478,255 @@ export default function HeroSection() {
             alt=""
             loading={index === 0 ? "eager" : "lazy"}
             decoding="async"
-            style={{ width: "100%", height: "100%", objectFit: "cover", position: "absolute", inset: 0 }}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              position: "absolute",
+              inset: 0,
+            }}
           />
-          <div style={{
-            position: "absolute", inset: 0,
-            background: "linear-gradient(to right, rgba(0,0,0,0.70) 0%, rgba(0,0,0,0.40) 60%, rgba(0,0,0,0.25) 100%)",
-          }} />
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              background:
+                "linear-gradient(to right, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.42) 55%, rgba(0,0,0,0.22) 100%)",
+            }}
+          />
         </motion.div>
       </AnimatePresence>
 
-      {/* ── MAIN TEXT CONTENT ── */}
-      <div style={{
-        position: "relative", zIndex: 10,
-        height: "100%", display: "flex", flexDirection: "column", justifyContent: "center",
-        // On mobile: no left offset for sidebar, full-width with horizontal padding
-        paddingLeft: isMobile ? "5%" : "calc(86px + 7%)",
-        paddingRight: isMobile ? "5%" : "calc(56px + 4%)",
-        maxWidth: 820,
-      }}>
+      {/* ── WIPE CURTAIN — slides away revealing new content ── */}
+      <AnimatePresence custom={direction}>
+        <motion.div
+          key={`wipe-${index}`}
+          custom={direction}
+          initial={{ scaleY: 1 }}
+          animate={{
+            scaleY: 0,
+            transition: { duration: 0.85, ease: [0.76, 0, 0.24, 1] },
+          }}
+          exit={{ scaleY: 0 }}
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: "rgba(10,10,10,0.6)",
+            zIndex: 5,
+            transformOrigin: direction > 0 ? "top center" : "bottom center",
+            pointerEvents: "none",
+          }}
+        />
+      </AnimatePresence>
+
+      {/* ── TEXT — each element slides in one by one ── */}
+      <div
+        style={{
+          position: "relative",
+          zIndex: 10,
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          paddingLeft: isMobile ? "5%" : "calc(86px + 7%)",
+          paddingRight: isMobile ? "5%" : "calc(56px + 4%)",
+          maxWidth: 820,
+        }}
+      >
         <AnimatePresence mode="wait">
           <motion.div
-            key={index}
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
+            key={`text-${index}`}
+            variants={textContainer}
+            initial="hidden"
+            animate="show"
+            exit="exit"
+            style={{ display: "flex", flexDirection: "column" }}
           >
-            {/* Subtitle + orange underline */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.7 }} style={{ marginBottom: 20 }}
-            >
-              <span style={{
-                fontFamily: "'Raleway', sans-serif", fontSize: 11, fontWeight: 700,
-                letterSpacing: "0.25em", textTransform: "uppercase", color: "#fff",
-                display: "block", marginBottom: 10,
-              }}>
+            {/* 1. Subtitle */}
+            <motion.div variants={textLine} style={{ marginBottom: 20 }}>
+              <span
+                style={{
+                  fontFamily: "'Raleway', sans-serif",
+                  fontSize: 11,
+                  fontWeight: 700,
+                  letterSpacing: "0.25em",
+                  textTransform: "uppercase",
+                  color: "#fff",
+                  display: "block",
+                  marginBottom: 10,
+                }}
+              >
                 {slide.subtitle}
               </span>
-              <div style={{ width: 160, height: 2, background: "#d54c23" }} />
+              {/* 2. Orange line animates width */}
+              <motion.div
+                key={`line-${index}`}
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.65, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                style={{
+                  width: 160,
+                  height: 2,
+                  background: "#d54c23",
+                  transformOrigin: "left center",
+                }}
+              />
             </motion.div>
 
-            {/* Title */}
-            <motion.h1
-              initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
+            {/* 3 & 4. Title lines — each line slides separately */}
+            {slide.title.split("\n").map((line, i) => (
+              <motion.div
+                key={`title-line-${i}`}
+                variants={textLine}
+                style={{ overflow: "hidden", marginBottom: i < slide.title.split("\n").length - 1 ? 0 : 28 }}
+              >
+                <h1
+                  style={{
+                    fontFamily: "'Raleway', sans-serif",
+                    fontSize: "clamp(32px, 5vw, 50px)",
+                    fontWeight: 600,
+                    lineHeight: 1.08,
+                    color: "#fff",
+                    margin: 0,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.02em",
+                  }}
+                >
+                  {line}
+                </h1>
+              </motion.div>
+            ))}
+
+            {/* 5. Description */}
+            <motion.p
+              variants={textLine}
               style={{
                 fontFamily: "'Raleway', sans-serif",
-                fontSize: "clamp(32px, 5vw, 50px)", fontWeight: 600, lineHeight: 1.05,
-                color: "#fff", margin: "0 0 28px 0",
-                textTransform: "uppercase", letterSpacing: "0.02em", whiteSpace: "pre-line",
-              }}
-            >
-              {slide.title}
-            </motion.h1>
-
-            {/* Description */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.75, duration: 0.7 }}
-              style={{
-                fontFamily: "'Raleway', sans-serif", fontSize: 16, fontWeight: 400,
-                lineHeight: 1.75, color: "rgba(255,255,255,0.82)", marginBottom: 44, maxWidth: 480,
+                fontSize: 16,
+                fontWeight: 400,
+                lineHeight: 1.75,
+                color: "rgba(255,255,255,0.82)",
+                margin: "0 0 44px 0",
+                maxWidth: 480,
               }}
             >
               {slide.desc}
             </motion.p>
 
-            {/* CTA Button */}
+            {/* 6. CTA Button */}
             <motion.button
-            onClick={() => navigate("/about")}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.0, duration: 0.7 }}
-            whileHover={{ scale: 1.02 }}
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 14,
-              background: "#d85c26",
-              padding: "15px 36px",
-              fontSize: 11,
-              fontFamily: "'Raleway', sans-serif",
-              fontWeight: 700,
-              letterSpacing: "0.2em",
-              textTransform: "uppercase",
-              color: "#fff",
-              cursor: "pointer",
-              width: "fit-content",
-              transition: "all 0.25s",
-            }}
-            onMouseEnter={e => {
-              e.currentTarget.style.background = "#d85c26";
-              e.currentTarget.style.borderColor = "#d85c26";
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.background = "transparent";
-              e.currentTarget.style.borderColor = "rgba(255,255,255,0.7)";
-            }}
-          >
-            <span
+              variants={textLine}
+              onClick={() => navigate("/about")}
+              whileHover={{ scale: 1.02 }}
               style={{
                 display: "inline-flex",
                 alignItems: "center",
-                justifyContent: "center",
-                width: 24,
-                height: 1,
-                background: "rgba(255, 255, 255, 0.8)",
-                position: "relative",
+                gap: 14,
+                background: "#d85c26",
+                padding: "15px 36px",
+                fontSize: 11,
+                fontFamily: "'Raleway', sans-serif",
+                fontWeight: 700,
+                letterSpacing: "0.2em",
+                textTransform: "uppercase",
+                color: "#fff",
+                cursor: "pointer",
+                width: "fit-content",
+                border: "none",
+                transition: "background 0.25s",
               }}
+              onMouseEnter={e => { e.currentTarget.style.background = "#bf4d1a"; }}
+              onMouseLeave={e => { e.currentTarget.style.background = "#d85c26"; }}
             >
               <span
                 style={{
-                  position: "absolute",
-                  right: -1,
-                  top: -4,
-                  width: 0,
-                  height: 0,
-                  borderLeft: "6px solid rgba(255,255,255,0.8)",
-                  borderTop: "4px solid transparent",
-                  borderBottom: "4px solid transparent",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: 24,
+                  height: 1,
+                  background: "rgba(255,255,255,0.8)",
+                  position: "relative",
                 }}
-              />
-            </span>
-            MORE ABOUT US
-          </motion.button>
+              >
+                <span
+                  style={{
+                    position: "absolute",
+                    right: -1,
+                    top: -4,
+                    width: 0,
+                    height: 0,
+                    borderLeft: "6px solid rgba(255,255,255,0.8)",
+                    borderTop: "4px solid transparent",
+                    borderBottom: "4px solid transparent",
+                  }}
+                />
+              </span>
+              MORE ABOUT US
+            </motion.button>
           </motion.div>
         </AnimatePresence>
       </div>
 
-      {/* ── SLIDE COUNTER bottom-right ── */}
-      <div style={{
-        position: "absolute", bottom: 28,
-        // On mobile, no right sidebar offset needed
-        right: isMobile ? 20 : 80,
-        zIndex: 10,
-        fontFamily: "'Raleway', sans-serif", letterSpacing: "0.12em",
-        color: "rgba(255,255,255,0.55)", fontSize: 13,
-        display: "flex", alignItems: "baseline", gap: 2,
-      }}>
-        <span style={{ color: "#fff", fontWeight: 700, fontSize: 28, lineHeight: 1 }}>
-          {String(index + 1).padStart(2, "0")}
-        </span>
+      {/* ── SLIDE COUNTER — animates in direction of travel ── */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: 28,
+          right: isMobile ? 20 : 108,
+          zIndex: 10,
+          fontFamily: "'Raleway', sans-serif",
+          letterSpacing: "0.12em",
+          color: "rgba(255,255,255,0.55)",
+          fontSize: 13,
+          display: "flex",
+          alignItems: "baseline",
+          gap: 2,
+        }}
+      >
+        <AnimatePresence mode="wait" custom={direction}>
+          <motion.span
+            key={index}
+            custom={direction}
+            initial={{ opacity: 0, y: direction > 0 ? 14 : -14 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: direction > 0 ? -14 : 14 }}
+            transition={{ duration: 0.38, ease: "easeInOut" }}
+            style={{ color: "#fff", fontWeight: 700, fontSize: 28, lineHeight: 1 }}
+          >
+            {String(index + 1).padStart(2, "0")}
+          </motion.span>
+        </AnimatePresence>
         <span style={{ fontSize: 13, margin: "0 3px" }}>/</span>
         <span>{String(SLIDES.length).padStart(2, "0")}</span>
       </div>
 
+      {/* ── PROGRESS BAR ── */}
+      <ProgressBar duration={INTERVAL} index={index} />
+
       {/* ── SCROLL DOWN ── */}
       <ScrollDown />
 
-      {/* ── SIDEBARS — hidden on mobile ── */}
+      {/* ── SIDEBARS ── */}
       {!isMobile && <LeftSidebar />}
-      {!isMobile && <RightSidebar quote={slide.quote} onPrev={goPrev} onNext={goNext} />}
+      {!isMobile && (
+        <RightSidebar quote={slide.quote} onPrev={goPrev} onNext={goNext} />
+      )}
 
-      {/* ── MOBILE SLIDE NAVIGATION (arrows only, no sidebar) ── */}
+      {/* ── MOBILE NAVIGATION ── */}
       {isMobile && (
-        <div style={{
-          position: "absolute", bottom: 28, left: "50%", transform: "translateX(-50%)",
-          zIndex: 10, display: "flex", alignItems: "center", gap: 16,
-          marginBottom: 70, // above scroll down
-        }}>
+        <div
+          style={{
+            position: "absolute",
+            bottom: 100,
+            left: "50%",
+            transform: "translateX(-50%)",
+            zIndex: 10,
+            display: "flex",
+            alignItems: "center",
+            gap: 16,
+          }}
+        >
           <button
             onClick={goPrev}
             style={{
@@ -585,18 +760,3 @@ export default function HeroSection() {
     </section>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

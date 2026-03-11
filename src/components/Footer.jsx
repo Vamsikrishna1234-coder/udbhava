@@ -298,7 +298,7 @@ const socials = [
 const contacts = [
   { type: "Address", value: "V V Nagar, Habsiguda, \nHyderabad,Telangana-500007" },
   { type: "Phone", value: "+91 98765 43210" },
-  { type: "Email", value: "udbhava@architect.com" },
+  { type: "Email", value: "udbhavaarchitect@gmail.com" },
   { type: "Working Hours", value: "Mon – Sat, 9AM – 6:30PM" },
 ];
 
