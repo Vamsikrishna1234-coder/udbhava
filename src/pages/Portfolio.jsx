@@ -236,11 +236,16 @@ function ProjectDetail({ project, onClose }) {
         }}>
           <img
             key={activeImg}
-            src={activeImg} alt={project.title}
+            src={activeImg}
+            alt={project.title}
+            loading="lazy"
+            decoding="async"
             style={{
               width: "100%",
               maxHeight: zoom === 1 ? "55vh" : "none",
-              height: "auto", objectFit: "contain", display: "block",
+              height: "auto",
+              objectFit: "contain",
+              display: "block",
               borderLeft: `4px solid ${ACCENT}`,
               animation: "imgSwap 0.3s ease",
             }}
@@ -302,11 +307,20 @@ function ProjectDetail({ project, onClose }) {
                   animation: `thumbIn 0.4s ease ${i * 0.06}s both`,
                 }}
               >
-                <img src={img} alt="" style={{
-                  width: "100%", height: 88, objectFit: "cover", display: "block",
-                  filter: isActive ? "brightness(1)" : "brightness(0.4)",
-                  transition: "filter 0.25s",
-                }} />
+                <img
+                  src={img}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  style={{
+                    width: "100%",
+                    height: 88,
+                    objectFit: "cover",
+                    display: "block",
+                    filter: isActive ? "brightness(1)" : "brightness(0.4)",
+                    transition: "filter 0.25s",
+                  }}
+                />
                 {isActive && <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 3, background: ACCENT }} />}
                 <div style={{
                   position: "absolute", top: 6, left: 7,
@@ -345,9 +359,15 @@ function ProjectCard({ project, index, onClick }) {
       {/* Cover */}
       <div style={{ overflow: "hidden", aspectRatio: "4/3" }}>
         <img
-          src={project.cover} alt={project.title}
+          src={project.cover}
+          alt={project.title}
+          loading="lazy"
+          decoding="async"
           style={{
-            width: "100%", height: "100%", objectFit: "cover", display: "block",
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            display: "block",
             transform: hov ? "scale(1.07)" : "scale(1)",
             transition: "transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94)",
             filter: hov ? "brightness(0.42)" : "brightness(0.72)",

@@ -10,13 +10,29 @@ export default function ContactUs() {
     message:""
   });
 
+  const [sent,setSent] = useState(false);
+
   const handleChange=(e)=>{
     setForm({...form,[e.target.name]:e.target.value});
   }
 
   const handleSubmit=(e)=>{
     e.preventDefault();
+
     console.log(form);
+
+    setSent(true);
+
+    setForm({
+      name:"",
+      email:"",
+      phone:"",
+      message:""
+    });
+
+    setTimeout(()=>{
+      setSent(false);
+    },3000);
   }
 
   return (
@@ -54,8 +70,6 @@ or any inquiries.
 
 <div className="space-y-10">
 
-{/* OFFICE */}
-
 <div>
 
 <h3 className="text-xl font-semibold mb-3 text-[#d85b26]">
@@ -63,15 +77,12 @@ Office Address
 </h3>
 
 <p className="text-gray-300 leading-relaxed">
-45 Architecture Street<br/>
-Downtown Design District<br/>
-Hyderabad, Telangana 500081
+V V Nagar, Habsiguda<br/>
+Hyderabad, Telangana-500007
 </p>
 
 </div>
 
-
-{/* PHONE */}
 
 <div>
 
@@ -86,8 +97,6 @@ Call Us
 </div>
 
 
-{/* EMAIL */}
-
 <div>
 
 <h3 className="text-xl font-semibold mb-3 text-[#d85b26]">
@@ -95,13 +104,11 @@ Email
 </h3>
 
 <p className="text-gray-300">
-studio@architectdesign.com
+udbhava@architect.com
 </p>
 
 </div>
 
-
-{/* WORK HOURS */}
 
 <div>
 
@@ -110,10 +117,8 @@ Working Hours
 </h3>
 
 <p className="text-gray-300 mb-4">
-Mon – Sat : 9:00 AM – 7:00 PM
+Mon – Sat : 9:00 AM – 6:30 PM
 </p>
-
-{/* SOCIAL MEDIA ICONS */}
 
 <div className="flex gap-4">
 
@@ -223,6 +228,36 @@ className="w-full h-[420px] border-0"
 
 
 </div>
+
+
+{/* SUCCESS POPUP */}
+
+{sent && (
+
+<div className="fixed inset-0 flex items-center justify-center bg-black/40 z-[9999]">
+
+<div className="bg-white text-black px-8 py-6 rounded-xl shadow-xl text-center max-w-sm">
+
+<h3 className="text-xl font-semibold mb-2 text-[#d85b26]">
+Message Sent
+</h3>
+
+<p className="text-gray-600 mb-4">
+Your message has been sent successfully.
+</p>
+
+<button
+onClick={()=>setSent(false)}
+className="bg-[#d85b26] text-white px-6 py-2 rounded-md hover:bg-[#b94a1f] transition"
+>
+Close
+</button>
+
+</div>
+
+</div>
+
+)}
 
 </section>
 

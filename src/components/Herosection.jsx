@@ -1,9 +1,13 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import img1 from "../assets/images/ig2.jpg";
 import img2 from "../assets/images/ig1.jpg";
 import img3 from "../assets/images/ig4.jpg";
+
+
+
 
 // Google Fonts loader
 function useFonts() {
@@ -182,9 +186,9 @@ function LeftSidebar() {
       background: "#fff",
       boxShadow: "2px 0 24px rgba(0,0,0,0.10)",
     }}>
-      <SidebarItem icon={<PhoneIcon />}    href="tel:+1234567890"           label="+1 234 567 890"   />
+      <SidebarItem icon={<PhoneIcon />}    href="tel:+91 98765 43210"           label="+91 98765 43210"   />
       <SidebarDivider />
-      <SidebarItem icon={<EmailIcon />}    href="mailto:hello@habikon.com"  label="hello@habikon.com" />
+      <SidebarItem icon={<EmailIcon />}    href="mailto:udbhava@architect.com"  label="udbhava@architect.com" />
       <SidebarDivider />
       <SidebarItem icon={<FacebookIcon />} href="https://facebook.com"      label="Facebook"         />
       <SidebarDivider />
@@ -363,7 +367,7 @@ export default function HeroSection() {
     const t = setInterval(() => setIndex(i => (i + 1) % SLIDES.length), 6000);
     return () => clearInterval(t);
   }, []);
-
+  const navigate = useNavigate();
   const goNext = () => setIndex(i => (i + 1) % SLIDES.length);
   const goPrev = () => setIndex(i => (i - 1 + SLIDES.length) % SLIDES.length);
 
@@ -386,7 +390,10 @@ export default function HeroSection() {
           style={{ position: "absolute", inset: 0 }}
         >
           <img
-            src={slide.image} alt=""
+            src={slide.image}
+            alt=""
+            loading={index === 0 ? "eager" : "lazy"}
+            decoding="async"
             style={{ width: "100%", height: "100%", objectFit: "cover", position: "absolute", inset: 0 }}
           />
           <div style={{
@@ -454,31 +461,62 @@ export default function HeroSection() {
 
             {/* CTA Button */}
             <motion.button
-              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.0, duration: 0.7 }}
-              whileHover={{ scale: 1.02 }}
+            onClick={() => navigate("/about")}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.0, duration: 0.7 }}
+            whileHover={{ scale: 1.02 }}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 14,
+              background: "#d85c26",
+              padding: "15px 36px",
+              fontSize: 11,
+              fontFamily: "'Raleway', sans-serif",
+              fontWeight: 700,
+              letterSpacing: "0.2em",
+              textTransform: "uppercase",
+              color: "#fff",
+              cursor: "pointer",
+              width: "fit-content",
+              transition: "all 0.25s",
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.background = "#d85c26";
+              e.currentTarget.style.borderColor = "#d85c26";
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.background = "transparent";
+              e.currentTarget.style.borderColor = "rgba(255,255,255,0.7)";
+            }}
+          >
+            <span
               style={{
-                display: "inline-flex", alignItems: "center", gap: 14,
-                background: "transparent", border: "2px solid rgba(255,255,255,0.7)",
-                padding: "15px 36px", fontSize: 11, fontFamily: "'Raleway', sans-serif",
-                fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase",
-                color: "#fff", cursor: "pointer", width: "fit-content", transition: "all 0.25s",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: 24,
+                height: 1,
+                background: "rgba(255, 255, 255, 0.8)",
+                position: "relative",
               }}
-              onMouseEnter={e => { e.currentTarget.style.background = "#d85c26"; e.currentTarget.style.borderColor = "#d85c26"; }}
-              onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = "rgba(255,255,255,0.7)"; }}
             >
-              <span style={{
-                display: "inline-flex", alignItems: "center", justifyContent: "center",
-                width: 24, height: 1, background: "rgba(255,255,255,0.8)", position: "relative",
-              }}>
-                <span style={{
-                  position: "absolute", right: -1, top: -4, width: 0, height: 0,
+              <span
+                style={{
+                  position: "absolute",
+                  right: -1,
+                  top: -4,
+                  width: 0,
+                  height: 0,
                   borderLeft: "6px solid rgba(255,255,255,0.8)",
-                  borderTop: "4px solid transparent", borderBottom: "4px solid transparent",
-                }} />
-              </span>
-              MORE ABOUT US
-            </motion.button>
+                  borderTop: "4px solid transparent",
+                  borderBottom: "4px solid transparent",
+                }}
+              />
+            </span>
+            MORE ABOUT US
+          </motion.button>
           </motion.div>
         </AnimatePresence>
       </div>

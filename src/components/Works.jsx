@@ -1,6 +1,8 @@
 
 import { useState, useEffect } from "react";
 import { DraftingCompass } from "lucide-react";
+import React from "react";
+import { Link } from "react-router-dom";
 
 // 4 PROJECTS EACH CATEGORY
 const projects = {
@@ -241,6 +243,9 @@ export default function LatestWorksSection() {
             {/* Image */}
             <img
               src={item.img}
+              alt={item.title}
+              loading="lazy"
+              decoding="async"
               style={{
                 width: "100%",
                 height: "100%",
@@ -249,7 +254,6 @@ export default function LatestWorksSection() {
                 display: "block",
               }}
               className="group-hover:scale-110"
-              alt={item.title}
             />
 
             {/* Black falling overlay */}
@@ -272,6 +276,7 @@ export default function LatestWorksSection() {
                   transition-all duration-500
                 "
               >
+                <Link to="/portfolio">
                 <button
                   style={{
                     width: isTablet ? "96px" : "128px",
@@ -295,6 +300,7 @@ export default function LatestWorksSection() {
                 >
                   View<br />Project
                 </button>
+              </Link>
               </div>
             )}
 

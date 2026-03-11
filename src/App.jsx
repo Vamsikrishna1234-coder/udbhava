@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Header from "../src/components/Header.jsx"
+import ScrollToTop from "../src/components/ScrolltoTop.jsx"
 import Home from "../src/pages/Home.jsx"
 import AboutPage from "../src/pages/About.jsx"
 import ServicesPage from "../src/pages/Services.jsx"
 import PortfolioPage from "../src/pages/Portfolio.jsx"
 import ContactPage from "../src/pages/Contact.jsx"
 import Footer from "../src/components/Footer.jsx"
-
 import './App.css'
 
 function App() {
@@ -16,6 +16,7 @@ function App() {
   return (
     <Router>
       <Header />
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<AboutPage />} />

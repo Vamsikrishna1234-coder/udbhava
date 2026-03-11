@@ -100,22 +100,24 @@ export default function Header() {
 
         {/* DESKTOP CTA */}
         {!isMobile && (
-          <button
-            style={{
-              fontFamily: "'Raleway', sans-serif",
-              fontSize: 11,
-              fontWeight: 600,
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
-              background: "#d85c26",
-              color: "#fff",
-              border: "none",
-              padding: "14px 32px",
-              cursor: "pointer",
-            }}
-          >
-            Get Consultation
-          </button>
+          <Link to="/contact">
+            <button
+              style={{
+                fontFamily: "'Raleway', sans-serif",
+                fontSize: 11,
+                fontWeight: 600,
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                background: "#d85c26",
+                color: "#fff",
+                border: "none",
+                padding: "14px 32px",
+                cursor: "pointer",
+              }}
+            >
+              Get Consultation
+            </button>
+          </Link>
         )}
 
         {/* MOBILE HAMBURGER */}
@@ -252,6 +254,7 @@ export default function Header() {
                 transition={{ delay: 0.45, duration: 0.35 }}
               >
                 <button
+                  onClick={() => navigate("/contact")}
                   style={{
                     width: "100%",
                     fontFamily: "'Raleway', sans-serif",

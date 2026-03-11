@@ -381,19 +381,17 @@ const styles = `
 `;
 
 const DATA = [
-  { name: "Robert Fox",           role: "Web Designer",       img: "https://randomuser.me/api/portraits/men/32.jpg" },
-  { name: "Floyd Miles",          role: "Marketing Manager",  img: "https://randomuser.me/api/portraits/men/44.jpg" },
-  { name: "Annette Black",        role: "UI/UX Designer",     img: "https://randomuser.me/api/portraits/women/65.jpg" },
-  { name: "Jerome Bell",          role: "Product Manager",    img: "https://randomuser.me/api/portraits/men/75.jpg" },
-  { name: "Esther Howard",        role: "Architect",          img: "https://randomuser.me/api/portraits/women/44.jpg" },
-  { name: "Cameron Williamson",   role: "Interior Designer",  img: "https://randomuser.me/api/portraits/men/55.jpg" },
-  { name: "Dianne Russell",       role: "Civil Engineer",     img: "https://randomuser.me/api/portraits/women/22.jpg" },
-  { name: "Wade Warren",          role: "Landscape Designer", img: "https://randomuser.me/api/portraits/men/62.jpg" },
-  { name: "Brooklyn Simmons",     role: "Urban Planner",      img: "https://randomuser.me/api/portraits/women/33.jpg" },
+  { name: "Arjun Sharma",        role: "Web Designer",        img: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=200&h=200&fit=crop&crop=faces" },
+  { name: "Rohit Varma",         role: "Marketing Manager",   img: "https://images.unsplash.com/photo-1615109398623-88346a601842?w=200&h=200&fit=crop&crop=faces" },
+  { name: "Priya Reddy",         role: "UI/UX Designer",      img: "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?w=200&h=200&fit=crop&crop=faces" },
+  { name: "Vikram Singh",        role: "Product Manager",     img: "https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?w=200&h=200&fit=crop&crop=faces" },
+  { name: "Ananya Reddy",        role: "Architect",           img: "https://images.unsplash.com/photo-1590086782957-93c06ef21604?w=200&h=200&fit=crop&crop=faces" },
+  { name: "Rahul Naik",          role: "Interior Designer",   img: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=200&h=200&fit=crop&crop=faces" },
+  { name: "Sneha Patel",         role: "Civil Engineer",      img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&crop=faces" },
+  { name: "Karthik Reddy",       role: "Landscape Designer",  img: "https://images.unsplash.com/photo-1601455763557-db1bea8a9a5a?w=200&h=200&fit=crop&crop=faces" },
+  { name: "Mahesh Kumar",        role: "Urban Planner",       img: "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=200&h=200&fit=crop&crop=faces" },
 ];
-
-const TEXT = "Lorem ipsum dolor sit amet consectetur adipiscing elit vestibulum viverra eget felis at interdum fusce odio lacus accumsan at sem vitae ullamcorper bibendum ligula.";
-
+const TEXT = "Working with this architectural team was an incredible experience. They perfectly understood our vision and transformed it into a beautiful, functional space. Their attention to detail, creativity, and professionalism made the entire process smooth and enjoyable.";
 export default function Testimonials() {
   const [index, setIndex] = useState(0);
   const width = useWindowWidth();

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import img1 from "../assets/images/img services.png";
 import img2 from "../assets/images/about img.jpg";
+import { Link } from "react-router-dom";
 
 const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;0,700;1,300;1,600&family=DM+Sans:wght@300;400;500&display=swap');
@@ -142,7 +143,12 @@ export default function AboutSection() {
             {/* Main large image — fills left column, slightly less height */}
             <div className={`ab-img-wrap absolute inset-0 lg:inset-y-8 lg:left-0 lg:right-8
                              ${secV ? "revealed" : ""}`}>
-              <img src={img1} alt="Architecture project" />
+             <img
+                src={img1}
+                alt="Architecture project"
+                loading="lazy"
+                decoding="async"
+              />
               {/* soft bottom fade into white */}
               <div className="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent" />
             </div>
@@ -154,7 +160,12 @@ export default function AboutSection() {
                           w-[50%] h-[40%] sm:w-[64%] sm:h-[58%]
                           border-15 border-white shadow-[0_12px_40px_rgba(0,0,0,0.15)] z-10`}
             >
-              <img src={img2} alt="Interior detail" />
+              <img
+                  src={img2}
+                  alt="Interior detail"
+                  loading="lazy"
+                  decoding="async"
+                />
             </div>
 
             {/* Year badge — top-left */}
@@ -243,11 +254,12 @@ export default function AboutSection() {
 
             {/* CTA */}
             <div className={`ab-fade-up ab-d6 ${rightV ? "on" : ""}`}>
+              <Link to="/portfolio">
               <button
                 className="ab-btn inline-flex items-center gap-3
-                           border border-[#d85b26] text-[#d85b26]
-                           text-[0.8rem] font-medium tracking-[0.18em] uppercase
-                           px-8 py-3.5 cursor-pointer bg-white"
+                          border border-[#d85b26] text-[#d85b26]
+                          text-[0.8rem] font-medium tracking-[0.18em] uppercase
+                          px-8 py-3.5 cursor-pointer bg-white"
               >
                 Explore Our Work
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -255,6 +267,7 @@ export default function AboutSection() {
                   <path d="M5 12h14M13 6l6 6-6 6"/>
                 </svg>
               </button>
+            </Link>
             </div>
 
           </div>

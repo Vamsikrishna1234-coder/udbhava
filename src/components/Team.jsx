@@ -1,4 +1,8 @@
 import { useEffect, useRef, useState } from "react";
+import t1 from "../assets/images/t1.png";
+import t2 from "../assets/images/t2.jpg";
+import t3 from "../assets/images/t3.jpg";
+import t4 from "../assets/images/t4.jpg";
 
 function useInView(threshold = 0.1) {
   const ref = useRef(null);
@@ -21,7 +25,7 @@ const teamMembers = [
     exp: "15+ yrs",
     specialty: "Contextual Design",
     bio: "15 years shaping contextual architecture across South India — driven by regional materials, passive design, and client-centered storytelling.",
-    img: "https://media.architecturaldigest.com/photos/6376a07f55499f704ecdba59/16:9/w_2560%2Cc_limit/Sam%2520Olbekson%2520portrait.jpg",
+    img: t1,
     social: { li: "#", ig: "#" },
   },
   {
@@ -30,7 +34,7 @@ const teamMembers = [
     exp: "10+ yrs",
     specialty: "Biophilic Interiors",
     bio: "Specialises in residential and hospitality projects with a focus on biophilic integration and sustainable material detailing.",
-    img: "https://media.cnn.com/api/v1/images/stellar/prod/hires-frida-escobedo-c-alex-trebus-001-v2.jpg?c=original",
+    img: t2,
     social: { li: "#", ig: "#" },
   },
   {
@@ -39,7 +43,7 @@ const teamMembers = [
     exp: "08+ yrs",
     specialty: "Adaptive Reuse",
     bio: "Expert in adaptive reuse and urban interventions — bringing technical precision and creative problem-solving to every site condition.",
-    img: "https://media.architecturaldigest.com/photos/6376a07f55499f704ecdba59/16:9/w_2560%2Cc_limit/Sam%2520Olbekson%2520portrait.jpg",
+    img: t3,
     social: { li: "#", ig: "#" },
   },
   {
@@ -48,7 +52,7 @@ const teamMembers = [
     exp: "04+ yrs",
     specialty: "Light & Materiality",
     bio: "Young talent focused on materiality, light studies, and physical model-making — turning abstract concepts into tactile spatial realities.",
-    img: "https://media.admiddleeast.com/photos/66bf0dbc6a98315186d18522/16:9/w_1280,c_limit/AD0824_Hero_banner_11_Women_Architects_2.jpg",
+    img: t4,
     social: { li: "#", ig: "#" },
   },
 ];

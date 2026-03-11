@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import img1 from "../assets/images/about parallelx.jpg";
 import IntroSection  from '../components/Whoweare';
 import Philosophy    from '../components/Philosophy';
 import Team          from '../components/Team';
@@ -121,10 +122,12 @@ export default function AboutHero() {
         {/* ── PARALLAX BACKGROUND IMAGE ── */}
         <div className="absolute inset-0 overflow-hidden">
           <img
-            src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1800&q=85"
-            alt="Architecture"
-            className="hero-parallax w-full h-full object-cover object-center"
-          />
+          src={img1}
+          alt="Architecture"
+          loading="lazy"
+          decoding="async"
+          className="hero-parallax w-full h-full object-cover object-center"
+        />
           {/* multi-layer dark overlay */}
           <div className="absolute inset-0 bg-gradient-to-b
                           from-[#0a0908]/70 via-[#0a0908]/40 to-[#0a0908]/90" />

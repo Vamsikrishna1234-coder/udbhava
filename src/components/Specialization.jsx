@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { DraftingCompass, Building2, Sofa, Ruler } from "lucide-react";
+import { Link } from "react-router-dom";
 import img1 from "../assets/images/img services2.jpg";
 
 const services = [
@@ -309,6 +310,7 @@ export default function SpecializationSection() {
                 {services[active].subdesc}
               </p>
 
+              <Link to="/services">
               <button
                 style={{
                   padding: isMobile ? "13px 28px" : "16px 36px",
@@ -329,6 +331,7 @@ export default function SpecializationSection() {
               >
                 Explore Service
               </button>
+            </Link>
             </div>
 
             {/* Right: Stat + Quote — horizontal on mobile, stacked on larger */}
