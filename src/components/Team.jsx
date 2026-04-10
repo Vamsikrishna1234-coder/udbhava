@@ -16,7 +16,7 @@ function useInView(threshold = 0.1) {
 
 const teamMembers = [
   {
-    name: "Yegireddi Vikram",
+    name: "Mitin Raj",
     role: "Founder & Principal Architect",
     exp: "15+ yrs",
     specialty: "Contextual Design",

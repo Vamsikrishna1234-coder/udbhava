@@ -1,9 +1,3 @@
-
-
-
-
-
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import favicon from "../assets/images/tact favicon.png";
@@ -44,7 +38,7 @@ const socials = [
 ];
 
 const contacts = [
-  { type: "Address", value: "V V Nagar, Habsiguda, \nHyderabad,Telangana-500007" },
+  { type: "Address", value: "V V Nagar, Habsiguda, \nHyderabad, Telangana - 500 007" },
   { type: "Phone", value: "+91 9966 559 219" },
   { type: "Email", value: "udbhavaarchitect@gmail.com" },
   { type: "Working Hours", value: "Mon – Sat, 9AM – 6:30PM" },

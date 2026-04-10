@@ -78,7 +78,7 @@ Office Address
 
 <p className="text-gray-300 leading-relaxed">
 V V Nagar, Habsiguda<br/>
-Hyderabad, Telangana-500007
+Hyderabad, Telangana - 500 007
 </p>
 
 </div>
