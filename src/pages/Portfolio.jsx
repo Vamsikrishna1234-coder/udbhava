@@ -34,7 +34,7 @@ const PROJECTS = [
   },
   {
     id: "02",
-    title: "Dr .Estates",
+    title: "Dr. Estates",
     category: "Building",
     tag: "Architecture",
     year: "2025",
@@ -144,7 +144,7 @@ const PROJECTS = [
   // RESIDENTIAL
   {
     id: "09",
-    title: "Mr.Nagireddy Interiors",
+    title: "Mr. Nagireddy Interiors",
     category: "Residential",
     tag: "Interior",
     year: "2024",
@@ -174,7 +174,7 @@ const PROJECTS = [
   },
   {
     id: "10",
-    title: "Mr.Reddy Interiors",
+    title: "Mr. Reddy Interiors",
     category: "Residential",
     tag: "Interior",
     year: "2024",

@@ -16,7 +16,7 @@ const projects = {
     },
     {
       id: 2,
-      title: "Dr .Estates",
+      title: "Dr. Estates",
       category: "BUILDING",
       sub: "ARCHITECTURE",
       img: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800287/15_d11srn.jpg",
@@ -69,7 +69,7 @@ const projects = {
   residential: [
     {
       id: 9,
-      title: "Mr.Nagireddy Interiors",
+      title: "Mr. Nagireddy Interiors",
       category: "RESIDENTIAL",
       sub: "INTERIOR",
       img: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800557/2_f1gxvz.png",
@@ -84,7 +84,7 @@ const projects = {
     },
     {
       id: 10,
-      title: "Mr.Reddy Interiors",
+      title: "Mr. Reddy Interiors",
       category: "RESIDENTIAL",
       sub: "INTERIOR",
       img: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800565/Image8_fxviti.png",
