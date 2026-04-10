@@ -490,7 +490,7 @@ export default function HeroSection() {
               position: "absolute",
               inset: 0,
               background:
-                "linear-gradient(to right, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.42) 55%, rgba(0,0,0,0.22) 100%)",
+                "linear-gradient(to right, rgba(0,0,0,0.52) 0%, rgba(0,0,0,0.32) 55%, rgba(0,0,0,0.12) 100%)",
             }}
           />
         </motion.div>
@@ -676,7 +676,7 @@ export default function HeroSection() {
           zIndex: 10,
           fontFamily: "'Raleway', sans-serif",
           letterSpacing: "0.12em",
-          color: "rgba(255,255,255,0.55)",
+          color: "rgb(255, 255, 255)",
           fontSize: 13,
           display: "flex",
           alignItems: "baseline",
