@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import img1 from "../assets/images/office img.png";
+
 
 function useWindowWidth() {
   const [width, setWidth] = useState(
@@ -344,7 +344,7 @@ export default function AboutIntro() {
               }}
             >
               <img
-                src={img1}
+                src="https://res.cloudinary.com/djnyc9yqk/image/upload/v1775814444/office_img_uncrsg.png"
                 alt="Udbhava Architects Office"
                 style={{ width: "100%", height: "100%", objectFit: "cover" }}
               />
@@ -424,7 +424,7 @@ export default function AboutIntro() {
               }}
             >
               <img
-                src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=400&q=90"
+                src="https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800754/9_s4zzjr.jpg"
                 alt="Interior Design"
                 style={{ width: "100%", height: "100%", objectFit: "cover" }}
               />

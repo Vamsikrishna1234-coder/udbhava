@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import img1 from "../assets/images/about parallelx.jpg";
 import IntroSection  from '../components/Whoweare';
 import Philosophy    from '../components/Philosophy';
 import Team          from '../components/Team';
@@ -122,7 +121,7 @@ export default function AboutHero() {
         {/* ── PARALLAX BACKGROUND IMAGE ── */}
         <div className="absolute inset-0 overflow-hidden">
           <img
-          src={img1}
+          src="https://res.cloudinary.com/djnyc9yqk/image/upload/v1775797579/SSVPD_CLUB_HOUSE_3d_Elevation_-_I_04-03-2023_jq8wqb.jpg"
           alt="Architecture"
           loading="lazy"
           decoding="async"
@@ -130,7 +129,7 @@ export default function AboutHero() {
         />
           {/* multi-layer dark overlay */}
           <div className="absolute inset-0 bg-gradient-to-b
-                          from-[#0a0908]/70 via-[#0a0908]/40 to-[#0a0908]/90" />
+                          from-[#0a0908]/70 via-[#0a0908]/40 to-[#0a0908]/50" />
           {/* vignette edges */}
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,#0a0908_100%)]" />
         </div>

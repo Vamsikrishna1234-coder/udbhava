@@ -1,6 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import img1 from "../assets/images/img services.png";
-import img2 from "../assets/images/about img.jpg";
 import { Link } from "react-router-dom";
 
 const styles = `
@@ -144,7 +142,7 @@ export default function AboutSection() {
             <div className={`ab-img-wrap absolute inset-0 lg:inset-y-8 lg:left-0 lg:right-8
                              ${secV ? "revealed" : ""}`}>
              <img
-                src={img1}
+                src="https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800565/Image8_fxviti.png"
                 alt="Architecture project"
                 loading="lazy"
                 decoding="async"
@@ -161,7 +159,7 @@ export default function AboutSection() {
                           border-15 border-white shadow-[0_12px_40px_rgba(0,0,0,0.15)] z-10`}
             >
               <img
-                  src={img2}
+                  src="https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800477/3_qth7vd.jpg"
                   alt="Interior detail"
                   loading="lazy"
                   decoding="async"

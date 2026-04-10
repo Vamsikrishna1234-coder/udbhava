@@ -1,8 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import t1 from "../assets/images/t1.png";
-import t2 from "../assets/images/t2.jpg";
-import t3 from "../assets/images/t3.jpg";
-import t4 from "../assets/images/t4.jpg";
 
 function useInView(threshold = 0.1) {
   const ref = useRef(null);
@@ -25,7 +21,7 @@ const teamMembers = [
     exp: "15+ yrs",
     specialty: "Contextual Design",
     bio: "15 years shaping contextual architecture across South India — driven by regional materials, passive design, and client-centered storytelling.",
-    img: t1,
+    img: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775813616/t1_yyp4yf.png",
     social: { li: "#", ig: "#" },
   },
   {
@@ -34,7 +30,7 @@ const teamMembers = [
     exp: "10+ yrs",
     specialty: "Biophilic Interiors",
     bio: "Specialises in residential and hospitality projects with a focus on biophilic integration and sustainable material detailing.",
-    img: t2,
+    img: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775813620/t2_trxrhz.jpg",
     social: { li: "#", ig: "#" },
   },
   {
@@ -43,7 +39,7 @@ const teamMembers = [
     exp: "08+ yrs",
     specialty: "Adaptive Reuse",
     bio: "Expert in adaptive reuse and urban interventions — bringing technical precision and creative problem-solving to every site condition.",
-    img: t3,
+    img: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775813626/t3_ktxza0.jpg",
     social: { li: "#", ig: "#" },
   },
   {
@@ -52,7 +48,7 @@ const teamMembers = [
     exp: "04+ yrs",
     specialty: "Light & Materiality",
     bio: "Young talent focused on materiality, light studies, and physical model-making — turning abstract concepts into tactile spatial realities.",
-    img: t4,
+    img: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775813631/t4_w1mglp.jpg",
     social: { li: "#", ig: "#" },
   },
 ];

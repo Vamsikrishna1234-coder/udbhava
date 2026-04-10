@@ -9,91 +9,92 @@ const projects = {
   building: [
     {
       id: 1,
-      title: "MODERN SKYSCRAPER",
+      title: "Anvaya @Kokapet",
       category: "BUILDING",
       sub: "ARCHITECTURE",
-      img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
+      img: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775798650/2_kgcghu.jpg",
     },
     {
       id: 2,
-      title: "NEXUS TOWER",
+      title: "Dr .Estates",
       category: "BUILDING",
       sub: "ARCHITECTURE",
-      img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80",
+      img: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800287/15_d11srn.jpg",
     },
     {
       id: 3,
-      title: "URBAN LUXURY TOWER",
+      title: "Haimi Nirvana @TELLAPUR",
       category: "BUILDING",
       sub: "MODERN",
-      img: "https://images.unsplash.com/photo-1451976426598-a7593bd6d0b2?w=800&q=80",
+      img: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800390/4_x5itn7.jpg",
     },
     {
       id: 4,
-      title: "SUNSET TALLEST",
+      title: "TWIN BIRDS",
       category: "BUILDING",
       sub: "ARCHITECTURE",
-      img: "https://images.unsplash.com/photo-1460574283810-2aab119d8511?w=800&q=80",
+      img: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800985/3_whasqc.jpg",
     },
   ],
   commercial: [
     {
       id: 5,
-      title: "3D RENDER HOUSE",
+      title: "RAIN FOREST",
       category: "COMMERCIAL",
       sub: "ARCHITECTURE",
-      img: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80",
+      img: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775801721/RAIN_FOREST_-7_rdayqn.jpg",
     },
     {
       id: 6,
-      title: "EUROPEAN COMPLEX",
+      title: "kiara @Shankerpally",
       category: "COMMERCIAL",
       sub: "ARCHITECTURE",
-      img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
+      img: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800656/1_pzwq5z.jpg",
     },
     {
       id: 7,
-      title: "BLUE HORIZON",
+      title: "MKT Office",
       category: "COMMERCIAL",
       sub: "INTERIOR",
-      img: "https://images.unsplash.com/photo-1554435493-93422e8220c8?w=800&q=80",
+      img: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800754/9_s4zzjr.jpg",
     },
     {
       id: 8,
-      title: "GRAND BUSINESS CENTER",
+      title: "H R R INFRA",
       category: "COMMERCIAL",
       sub: "CORPORATE",
-      img: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80",
+      img: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800477/3_qth7vd.jpg",
     },
   ],
   residential: [
     {
       id: 9,
-      title: "APARTMENT BUILDING",
+      title: "Mr.Nagireddy Interiors",
       category: "RESIDENTIAL",
       sub: "INTERIOR",
-      img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
+      img: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800557/2_f1gxvz.png",
+    },
+    
+    {
+      id: 11,
+      title: "URBANTREE @ISNAPUR",
+      category: "RESIDENTIAL",
+      sub: "PLANNING",
+      img: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775801069/2_w3fgdb.jpg",
     },
     {
       id: 10,
-      title: "VILLA SERENA",
+      title: "Mr.Reddy Interiors",
       category: "RESIDENTIAL",
       sub: "INTERIOR",
-      img: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80",
-    },
-    {
-      id: 11,
-      title: "GARDEN RESIDENCE",
-      category: "RESIDENTIAL",
-      sub: "PLANNING",
-      img: "https://images.unsplash.com/photo-1567496898669-ee935f5f647a?w=800&q=80",
+      img: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800565/Image8_fxviti.png",
     },
     {
       id: 12,
-      title: "SUNSET HILLS VILLA",
+      title: "Usha",
       category: "RESIDENTIAL",
       sub: "LUXURY",
-      img: "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=800&q=80",
+      img: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775801125/2_ofrs00.jpg",
     },
   ],
 };
@@ -352,7 +353,7 @@ export default function LatestWorksSection() {
               <h3
                 style={{
                   color: "#fff",
-                  fontSize: isMobile ? "11px" : "16px",
+                  fontSize: isMobile ? "11px" : "18px",
                   fontWeight: 700,
                   textTransform: "uppercase",
                   letterSpacing: "0.05em",
@@ -364,7 +365,7 @@ export default function LatestWorksSection() {
               </h3>
               <p
                 style={{
-                  color: "rgba(255,255,255,0.7)",
+                  color: "rgba(255, 255, 255, 0.78)",
                   fontSize: isMobile ? "9px" : "11px",
                   letterSpacing: "0.2em",
                   textTransform: "uppercase",
@@ -380,3 +381,6 @@ export default function LatestWorksSection() {
     </section>
   );
 }
+
+
+

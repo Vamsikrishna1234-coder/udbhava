@@ -1,10 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import img1 from "../assets/images/S1.png";
-import img2 from "../assets/images/S2.jpg";
-import img3 from "../assets/images/S3.png";
-import img4 from "../assets/images/S4.jpg";
-import img5 from "../assets/images/S5.png";
-import img6 from "../assets/images/S6.png";
 import { Link } from "react-router-dom";
 
 const SERVICES = [
@@ -18,7 +12,7 @@ const SERVICES = [
     features: ["Site Analysis & Feasibility", "Concept Development", "Space Programming", "Budget Alignment", "Regulatory Compliance"],
     stat1: { value: "2,400+", label: "Projects Planned" },
     stat2: { value: "98%", label: "Client Satisfaction" },
-    image: img1,
+    image: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775814063/S1_jmbjmi.png",
     accent: "#d85c26",
   },
   {
@@ -31,7 +25,7 @@ const SERVICES = [
     features: ["Schematic Design", "Construction Documentation", "Material Specification", "Structural Coordination", "Sustainable Design"],
     stat1: { value: "150+", label: "Awards Won" },
     stat2: { value: "35", label: "Countries Built In" },
-    image: img2,
+    image: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775814066/S2_haqrlg.jpg",
     accent: "#d85c26",
   },
   {
@@ -44,7 +38,7 @@ const SERVICES = [
     features: ["Furniture & FF&E", "Lighting Design", "Custom Millwork", "Art Curation", "Material Sourcing"],
     stat1: { value: "600+", label: "Interiors Designed" },
     stat2: { value: "12", label: "Design Awards" },
-    image: img4,
+    image: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775814077/S4_egmjqc.jpg",
     accent: "#d85c26",
   },
   {
@@ -57,7 +51,7 @@ const SERVICES = [
     features: ["Master Scheduling", "Cost Estimation", "Contractor Coordination", "Risk Management", "Progress Reporting"],
     stat1: { value: "100%", label: "On-Time Delivery" },
     stat2: { value: "€2B+", label: "Projects Managed" },
-    image: img3,
+    image: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775814072/S3_dx59ou.png",
     accent: "#d85c26",
   },
   {
@@ -70,7 +64,7 @@ const SERVICES = [
     features: ["Photorealistic Stills", "Virtual Walkthroughs", "Daylight Simulation", "Material Previews", "Animation & Film"],
     stat1: { value: "4K", label: "Resolution Output" },
     stat2: { value: "48hr", label: "Turnaround Time" },
-    image: img5,
+    image: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775814097/S5_udi3aj.png",
     accent: "#d85c26",
   },
   {
@@ -83,7 +77,7 @@ const SERVICES = [
     features: ["Heritage Restoration", "Adaptive Reuse", "Structural Upgrades", "MEP Modernisation", "Phased Construction"],
     stat1: { value: "300+", label: "Renovations Complete" },
     stat2: { value: "40yr", label: "Oldest Project Restored" },
-    image: img6,
+    image: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775814272/S6_pq2emg.png",
     accent: "#d85c26",
   },
 ];

@@ -17,94 +17,188 @@ const ACCENT = "#d85c26";
 
 // ─── PROJECT DATA (from LatestWorksSection, 6 total) ──────────────────────────
 const PROJECTS = [
+  // BUILDING
   {
     id: "01",
-    title: "Modern Skyscraper",
+    title: "Anvaya @Kokapet",
     category: "Building",
     tag: "Architecture",
     year: "2024",
-    location: "New York, USA",
-    cover: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1400&q=85",
+    location: "Hyderabad",
+    cover: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775798650/2_kgcghu.jpg",
     images: [
-      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80",
-      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=80",
-      "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80",
-      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80",
+           "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775798650/1_tbbiy1.jpg",
+           "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775798652/5_ngeud7.jpg",
+           "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775798651/4_h9btwp.jpg"
     ],
   },
   {
     id: "02",
-    title: "European Complex",
-    category: "Commercial",
+    title: "Dr .Estates",
+    category: "Building",
     tag: "Architecture",
-    year: "2023",
-    location: "Paris, France",
-    cover: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1400&q=85",
+    year: "2025",
+    location: "Hyderabad",
+    cover: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800287/15_d11srn.jpg",
     images: [
-      "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80",
-      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
-      "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80",
-      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&q=80",
+             "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800283/10_oxntgl.jpg",
+             "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800283/11_mu2nn7.jpg",
+             "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800280/5_zycgwm.jpg",
+             "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800279/3_xihhkx.jpg",
+             "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800289/17_g9dvcg.jpg",
+             "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800291/19_ldz12k.jpg",
+             "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800288/16_uri1gy.jpg"
+                    
     ],
   },
   {
     id: "03",
-    title: "Villa Serena",
-    category: "Residential",
-    tag: "Luxury",
-    year: "2023",
-    location: "Amalfi Coast, Italy",
-    cover: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=1400&q=85",
+    title: "Haimi Nirvana @TELLAPUR",
+    category: "Building",
+    tag: "Modern",
+    year: "2025",
+    location: "Tellapur",
+    cover: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800390/4_x5itn7.jpg",
     images: [
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
-      "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80",
-      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80",
-      "https://images.unsplash.com/photo-1615874959474-d609969a20ed?w=800&q=80",
+                "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800389/2_l1jxn6.jpg",
+                "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800390/3_clqtrb.jpg",
+                "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800388/1_ja8brs.jpg",
+                "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800429/FLAT-2_skie7d.jpg",
+                "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800428/FLAT-1_lbgvvo.jpg"
     ],
   },
   {
     id: "04",
-    title: "Grand Business Center",
-    category: "Commercial",
-    tag: "Corporate",
-    year: "2022",
-    location: "Frankfurt, Germany",
-    cover: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1400&q=85",
+    title: "TWIN BIRDS",
+    category: "Building",
+    tag: "Architecture",
+    year: "2024",
+    location: "Hyderabad",
+    cover: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800985/3_whasqc.jpg",
     images: [
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
-      "https://images.unsplash.com/photo-1554435493-93422e8220c8?w=800&q=80",
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80",
-      "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80",
+              "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800983/2_gnfeet.jpg",
+              "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800981/1_y3ym9v.jpg"
     ],
   },
+
+  // COMMERCIAL
   {
     id: "05",
-    title: "Sunset Hills Villa",
-    category: "Residential",
-    tag: "Luxury",
-    year: "2022",
-    location: "Malibu, USA",
-    cover: "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=1400&q=85",
+    title: "RAIN FOREST",
+    category: "Commercial",
+    tag: "Architecture",
+    year: "2025",
+    location: "Hyderabad",
+    cover: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775801721/RAIN_FOREST_-7_rdayqn.jpg",
     images: [
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
-      "https://images.unsplash.com/photo-1567496898669-ee935f5f647a?w=800&q=80",
-      "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80",
-      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80",
+              "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775801726/RAIN_FOREST-4_acpy7p.jpg",
+              "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775801724/RAIN_FOREST_-8_egqpho.jpg",
+              "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775801719/RAIN_FOREST_-6_osi05z.jpg",
+              "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775801698/RAIN_FOREST_-5_mjrwfq.jpg"
     ],
   },
   {
     id: "06",
-    title: "Blue Horizon",
+    title: "kiara @Shankerpally",
+    category: "Commercial",
+    tag: "Architecture",
+    year: "2024",
+    location: "Shankerpally",
+    cover: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800656/1_pzwq5z.jpg",
+    images: [
+              "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800660/4_g0m3n3.jpg",
+              "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800659/3_od7wp9.jpg",
+              "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800657/2_kpfkhh.jpg"
+    ],
+  },
+  {
+    id: "07",
+    title: "MKT Office",
     category: "Commercial",
     tag: "Interior",
-    year: "2022",
-    location: "Barcelona, Spain",
-    cover: "https://images.unsplash.com/photo-1554435493-93422e8220c8?w=1400&q=85",
+    year: "2026",
+    location: "Hyderabad",
+    cover: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800754/9_s4zzjr.jpg",
     images: [
-      "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80",
-      "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&q=80",
-      "https://images.unsplash.com/photo-1568992687947-868a62a9f521?w=800&q=80",
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80",
+              "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800759/12_c5cwzh.jpg",
+              "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800752/8_ioe2zj.jpg",
+              "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800756/10_a5uxck.jpg",
+              "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800745/4_b4mt1c.jpg",
+              "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800742/2_kogkw3.jpg"
+    ],
+  },
+  {
+    id: "08",
+    title: "H R R INFRA",
+    category: "Commercial",
+    tag: "Corporate",
+    year: "2025",
+    location: "Hyderabad",
+    cover: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800477/3_qth7vd.jpg",
+    images: [
+           "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800476/2_yo6rbp.jpg",
+           "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800475/1_aywrx3.jpg"
+    ],
+  },
+
+  // RESIDENTIAL
+  {
+    id: "09",
+    title: "Mr.Nagireddy Interiors",
+    category: "Residential",
+    tag: "Interior",
+    year: "2024",
+    location: "Hyderabad",
+    cover: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800557/2_f1gxvz.png",
+    images: [
+           "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800569/Image9_ewfx0d.png",
+           "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800566/Image8_000_zybiu8.png",
+           "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800565/Image8_fxviti.png"
+    ],
+  },
+  {
+    id: "11",
+    title: "URBANTREE @ISNAPUR",
+    category: "Residential",
+    tag: "Planning",
+    year: "2025",
+    location: "Isnapur",
+    cover: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775801069/2_w3fgdb.jpg",
+    images: [
+             "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775801067/1_lhqfln.jpg",
+             "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775801073/4_swn8pl.jpg",
+             "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775801077/6_tqklzt.jpg",
+             "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775801071/3_xk3oih.jpg",
+             "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775801079/7_prg8qz.jpg"
+    ],
+  },
+  {
+    id: "10",
+    title: "Mr.Reddy Interiors",
+    category: "Residential",
+    tag: "Interior",
+    year: "2024",
+    location: "Hyderabad",
+    cover: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800565/Image8_fxviti.png",
+    images: [
+            "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800563/Image4_ftazx9.png",
+            "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800560/Image2_y2z40r.png",
+            "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800558/3_y1wvkz.png"
+    ],
+  },
+  {
+    id: "12",
+    title: "Usha",
+    category: "Residential",
+    tag: "Luxury",
+    year: "2024",
+    location: "Hyderabad",
+    cover: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775801125/2_ofrs00.jpg",
+    images: [
+           "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775801123/1_fnsrfq.jpg",
+           "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775801139/7_hrsnex.jpg",
+           "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775801130/4_dawgmd.jpg",
+           "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775801139/8_f8b8bb.jpg"
     ],
   },
 ];
@@ -253,7 +347,7 @@ function ProjectDetail({ project, onClose }) {
           {/* sub-tag overlay */}
           <div style={{
             position: "absolute", bottom: 0, left: 4, right: 0,
-            background: "linear-gradient(transparent, rgba(0,0,0,0.72))",
+            background: "linear-gradient(transparent, rgba(0, 0, 0, 0.38))",
             padding: "24px 16px 10px",
             display: "flex", alignItems: "center", gap: 10,
           }}>
@@ -557,3 +651,7 @@ export default function Portfolio() {
     </>
   );
 }
+
+
+
+

@@ -2,9 +2,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import img1 from "../assets/images/ig2.jpg";
-import img2 from "../assets/images/ig1.jpg";
-import img3 from "../assets/images/ig4.jpg";
+
+
 
 function useFonts() {
   useEffect(() => {
@@ -36,21 +35,21 @@ const SLIDES = [
     title: "A DESIGN\nWELL SIMPLIFIED.",
     desc: "We creating lasting impressions through architecture design.",
     quote: "MORE THAN 2,000 PROJECTS COMPLETED",
-    image: img1,
+    image: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775797576/SSVPD_CLUB_HOUSE_3d_Elevation_-_IV_04-03-2023_o4v3py.jpg",
   },
   {
     subtitle: "INNOVATIVE ARCHITECTURAL VISION",
     title: "BUILDING\nTOMORROW TODAY.",
     desc: "Transforming visions into architectural masterpieces with sustainable excellence.",
     quote: "15 YEARS OF ARCHITECTURAL EXCELLENCE",
-    image: img2,
+    image: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775801721/RAIN_FOREST_-7_rdayqn.jpg",
   },
   {
     subtitle: "WHERE FUNCTION MEETS BEAUTY",
     title: "SPACES THAT\nINSPIRE LIVING.",
     desc: "Interior solutions blending aesthetics and functionality into meaningful environments.",
     quote: "AWARD-WINNING DESIGN STUDIO",
-    image: img3,
+    image: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775802020/2_na5r4z.jpg",
   },
 ];
 

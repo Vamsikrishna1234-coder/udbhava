@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { DraftingCompass, Building2, Sofa, Ruler } from "lucide-react";
 import { Link } from "react-router-dom";
-import img1 from "../assets/images/img services2.jpg";
+// import img1 from "../assets/images/img services2.jpg";
 
 const services = [
   {
@@ -97,7 +97,7 @@ export default function SpecializationSection() {
         position: "relative",
         width: "100%",
         minHeight: "100vh",
-        backgroundImage: "url(" + img1 + ")",
+        backgroundImage: "url(" + "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800476/2_yo6rbp.jpg" + ")",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
