@@ -213,10 +213,10 @@ export default function AboutSection() {
 
             {/* Body copy */}
             <p className={`ab-fade-up ab-d3 ${rightV ? "on" : ""}
-                           text-[#666] text-[0.96rem] leading-[1.8] max-w-sm`}>
-              Udbhava Studio bridges raw materiality with timeless form — designing
-              residences, civic spaces, and interiors that are deeply rooted in their
-              context and built to endure.
+                           text-[#666] text-[0.96rem] leading-[1.8] max-w-xl`}>
+             Udbhava Studio bridges raw materiality with timeless form, crafting residences, civic spaces, and interiors that are deeply rooted in their context and built to endure.
+             Guided by a thoughtful design philosophy, we integrate sustainability, functionality, and refined aesthetics into every project.
+             Our work reflects a commitment to detail, innovation, and creating spaces that resonate with purpose and longevity.
             </p>
 
             {/* Skill bars */}

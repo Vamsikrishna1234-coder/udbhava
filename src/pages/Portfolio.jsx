@@ -43,8 +43,6 @@ const PROJECTS = [
     images: [
              "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800283/10_oxntgl.jpg",
              "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800283/11_mu2nn7.jpg",
-             "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800280/5_zycgwm.jpg",
-             "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800279/3_xihhkx.jpg",
              "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800289/17_g9dvcg.jpg",
              "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800291/19_ldz12k.jpg",
              "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800288/16_uri1gy.jpg"
@@ -120,9 +118,9 @@ const PROJECTS = [
     location: "Hyderabad",
     cover: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800754/9_s4zzjr.jpg",
     images: [
-              "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800759/12_c5cwzh.jpg",
+              "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800747/5_l3dswl.jpg",
               "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800752/8_ioe2zj.jpg",
-              "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800756/10_a5uxck.jpg",
+              "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800750/7_ijny1d.jpg",
               "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800745/4_b4mt1c.jpg",
               "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800742/2_kogkw3.jpg"
     ],
@@ -195,8 +193,9 @@ const PROJECTS = [
     location: "Hyderabad",
     cover: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775801125/2_ofrs00.jpg",
     images: [
-           "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775801123/1_fnsrfq.jpg",
-           "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775801139/7_hrsnex.jpg",
+
+           "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800747/5_l3dswl.jpg",
+           "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775800750/7_ijny1d.jpg",
            "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775801130/4_dawgmd.jpg",
            "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775801139/8_f8b8bb.jpg"
     ],

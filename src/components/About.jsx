@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+
 
 
 function useWindowWidth() {
@@ -15,6 +17,7 @@ function useWindowWidth() {
 }
 
 export default function AboutIntro() {
+  
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true, amount: 0.2 });
   const width = useWindowWidth();
@@ -29,10 +32,10 @@ export default function AboutIntro() {
   });
 
   const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-
+  
   const [years, setYears] = useState(0);
   const [projects, setProjects] = useState(0);
-
+  const navigate = useNavigate();
   useEffect(() => {
     if (isInView) {
       let yearCount = 0;
@@ -126,30 +129,8 @@ export default function AboutIntro() {
               marginBottom: 24,
             }}
           >
-            <motion.div
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              style={{
-                width: 8,
-                height: 8,
-                borderRadius: "50%",
-                background: "#d85c26",
-                boxShadow: "0 0 12px rgba(216,92,38,0.5)",
-                flexShrink: 0,
-              }}
-            />
-            <span
-              style={{
-                fontFamily: "'Raleway', sans-serif",
-                fontSize: isMobile ? 11 : 13,
-                letterSpacing: "0.22em",
-                textTransform: "uppercase",
-                color: "#d85c26",
-                fontWeight: 600,
-              }}
-            >
-              Welcome to Udbhava Architects
-            </span>
+            
+            
           </motion.div>
 
           {/* Headings */}
@@ -205,8 +186,7 @@ export default function AboutIntro() {
             }}
           >
             At <strong style={{ color: "#1a1a1a" }}>Udbhava Architects</strong>,
-            we believe architecture is more than structures — it's about
-            creating meaningful spaces.
+            "We believe architecture is more than structures — it's about creating meaningful spaces where human connection meets intentional design."
           </motion.p>
 
           <motion.p
@@ -222,18 +202,18 @@ export default function AboutIntro() {
               maxWidth: 560,
             }}
           >
-            Our multidisciplinary team blends innovation, sustainability and aesthetics.
+            Driven by expertise across disciplines, we create solutions that balance innovation, sustainability, and aesthetics.
           </motion.p>
 
           {/* CTA Button */}
           <motion.a
-            href="/about"
+            onClick={() => navigate("/about")}
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.9 }}
             whileHover={{ x: 8 }}
             whileTap={{ scale: 0.98 }}
-            className="relative inline-flex items-center gap-3 overflow-hidden group"
+            className="relative inline-flex items-center gap-3 overflow-hidden group cursor-pointer"
             style={{
               fontFamily: "'Raleway', sans-serif",
               fontSize: 11,
@@ -251,6 +231,7 @@ export default function AboutIntro() {
             }}
           >
             <span className="absolute inset-0 w-full h-full bg-[#d85c26] translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500 ease-out" />
+
             <span className="relative z-10 group-hover:text-black transition-colors duration-300">
               More About Us
             </span>

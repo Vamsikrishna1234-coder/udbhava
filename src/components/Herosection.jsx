@@ -32,7 +32,7 @@ function useIsMobile(breakpoint = 768) {
 const SLIDES = [
   {
     subtitle: "FROM CONCEPT TO BETTER LIVING",
-    title: "A DESIGN\nWELL SIMPLIFIED.",
+    title: "Elegance in Simplicity.",
     desc: "We creating lasting impressions through architecture design.",
     quote: "MORE THAN 2,000 PROJECTS COMPLETED",
     image: "https://res.cloudinary.com/djnyc9yqk/image/upload/v1775797576/SSVPD_CLUB_HOUSE_3d_Elevation_-_IV_04-03-2023_o4v3py.jpg",
